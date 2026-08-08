@@ -44,7 +44,7 @@ request history.
 
 | RFC | Title | Status | Target |
 |---:|---|---|---|
-| — | No RFCs published yet | — | — |
+| None | No RFCs published yet | Not applicable | Not applicable |
 
 [Read the process →](process.md){ .md-button .md-button--primary }
 [Use the template →](template.md){ .md-button }

@@ -5,8 +5,8 @@
 **Version:** 0.1.0
 **Licence:** MIT
 
-This document defines Agent Status Codes (ASC), the semantic control layer for
-reporting autonomous work across system boundaries. A conforming ASC payload
+This document defines Agent Status Codes (ASC), a shared vocabulary for status
+reports exchanged between agents and applications. A conforming ASC payload
 makes lifecycle, outcome, simultaneous conditions, events, and retry safety
 portable without requiring a shared agent framework.
 

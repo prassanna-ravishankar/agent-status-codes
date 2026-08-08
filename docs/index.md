@@ -19,10 +19,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <div class="asc-opening-copy" markdown>
 
-# A shared status layer for autonomous work. { #asc-title }
+# Status codes for agents { #asc-title }
 
-ASC makes agent state portable across runtimes, tools, and organisations,
-including whether work is waiting for a person or safe to retry.
+A shared, machine-readable vocabulary for agents and applications to report
+progress, outcomes, human input, and recovery.
 
 <div class="asc-actions">
   <a class="asc-action asc-action--primary" href="#code-space">Explore the code space <span aria-hidden="true">↓</span></a>
@@ -31,9 +31,9 @@ including whether work is waiting for a person or safe to retry.
 
 </div>
 
-<figure class="asc-interchange" aria-labelledby="interchange-title interchange-caption">
+<figure class="asc-interchange" aria-labelledby="interchange-title">
   <div class="asc-interchange-head">
-    <span id="interchange-title">One report, five independent signals</span>
+    <span id="interchange-title">Example status</span>
     <span>ASC 0.1 · experimental</span>
   </div>
   <div class="asc-route asc-route--phase">
@@ -66,9 +66,6 @@ including whether work is waiting for a person or safe to retry.
     <strong>3002</strong>
     <small>HUMAN_APPROVAL_REQUIRED</small>
   </a>
-  <figcaption id="interchange-caption">
-    The constructs travel together without collapsing into one field.
-  </figcaption>
 </figure>
 
 </section>
@@ -76,7 +73,7 @@ including whether work is waiting for a person or safe to retry.
 <section class="asc-code-space" id="code-space" aria-labelledby="code-space-title" markdown>
 
 <header class="asc-section-head">
-  <h2 id="code-space-title">Browse by code class.</h2>
+  <h2 id="code-space-title">Browse the code classes</h2>
   <p>The first digit is the safe fallback when a consumer does not recognise a specific code.</p>
 </header>
 
@@ -97,13 +94,13 @@ including whether work is waiting for a person or safe to retry.
 <section class="asc-protocol-claim" aria-labelledby="boundary-title" markdown>
   <div markdown>
 
-## Agent state must survive the boundary. { #boundary-title }
+## Why ASC exists { #boundary-title }
 
-An internal enum can be enough while one runtime owns the entire task. Once
-another system needs to interpret that state, missing distinctions become
-coordination bugs. A wait may look like a failure, transport success may be
-mistaken for task success, and a transient error may be replayed after its side
-effect has already committed.
+HTTP status codes let a client act on a response without knowing how the server
+is built. Agent integrations lack that shared vocabulary, so every agent and
+application pair invents terms for running, waiting, partial success, human
+input, and recovery. ASC defines those meanings once so applications can act on
+them consistently.
 
 [Why ASC exists](why.md){ .asc-text-link }
 
@@ -117,7 +114,7 @@ effect has already committed.
 <section class="asc-five" aria-labelledby="five-title" markdown>
 
 <header class="asc-section-head">
-  <h2 id="five-title">The status model has five parts.</h2>
+  <h2 id="five-title">The five parts of a status report</h2>
   <p>Each part answers a different control-flow question and remains independently useful.</p>
 </header>
 
@@ -136,7 +133,7 @@ effect has already committed.
 <section class="asc-envelope" aria-labelledby="envelope-title" markdown>
   <div markdown>
 
-## ASC travels through existing protocols. { #envelope-title }
+## Use ASC with existing protocols { #envelope-title }
 
 ASC does not replace HTTP, gRPC, A2A, MCP, OpenTelemetry, or framework-native
 types. It gives each of them a stable agent-status payload.
@@ -163,7 +160,7 @@ types. It gives each of them a stable agent-status payload.
 
 <section class="asc-open-draft" aria-labelledby="draft-title" markdown>
   <div>
-    <h2 id="draft-title">ASC 0.1 needs implementation evidence.</h2>
+    <h2 id="draft-title">ASC 0.1 is experimental</h2>
     <p>The draft is experimental. Implement it, identify ambiguous boundaries, and propose changes with concrete cases.</p>
   </div>
   <div class="asc-draft-links">

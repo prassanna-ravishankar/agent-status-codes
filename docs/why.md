@@ -1,31 +1,35 @@
-# Status is part of the protocol
+# Why agents need status codes
 
-Once autonomous work crosses a system boundary, status can no longer remain an
-internal enum. The receiving system needs to know whether the work is running,
-waiting, finished, partly successful, blocked by policy, or uncertain about a
-side effect; it also needs to know whether a person must act and whether another
+HTTP status codes give clients a shared vocabulary for handling a response. A
+client does not need to know how the server is implemented to recognise that it
+should follow a redirect, authenticate, wait before another request, or stop.
+The number carries enough common meaning for software to act.
+
+Agents and the applications that use them do not have an equivalent vocabulary.
+Each integration invents its own terms for running, waiting for a person,
+partial success, policy refusal, and recovery. Those meanings end up scattered
+across exceptions, task states, tool-result strings, graph interrupts,
+callbacks, provider codes, and interface labels. Every application must build a
+translation layer before it can decide what to display or do next.
+
+ASC defines that interaction once. It gives an agent a portable way to report
+what is happening, what happened, which facts remain true, and whether another
 attempt is safe.
 
-That meaning is currently scattered across exceptions, task states,
-tool-result strings, graph interrupts, callbacks, provider codes, and dashboard
-labels. Each integration therefore constructs its own translation layer, where
-subtle but important distinctions are easily lost.
+## Transport status does not describe agent work
 
-## Autonomous work breaks request-shaped status
+An HTTP response describes the exchange that carried an agent report. It does
+not describe the work inside that report. A `200 OK` can confirm that an
+application received the latest state while the task itself is still running,
+waiting for approval, partly complete, or uncertain about a side effect.
 
-A request normally has one response, whereas autonomous work forms a tree of
-scopes that can remain active for minutes or days. During that time it may call
-state-changing tools, delegate work, preserve mixed child outcomes, pause for a
-person, repair a failed verification, or lose the response to an operation that
-may already have committed.
+Agent work can also remain active for minutes or days, call state-changing
+tools, delegate to child tasks, preserve mixed outcomes, pause for a person, or
+lose the response to an operation that may already have committed. A single
+transport result cannot express those states.
 
-HTTP can report that the status document was delivered successfully. It cannot
-say that the task described by that document is waiting for approval. A process
-exit code can report termination. It cannot say which child action succeeded or
-whether replay risks performing it twice.
-
-These questions concern the work performed by the agent rather than the
-transport or process carrying it, so they need their own contract.
+ASC sits alongside HTTP, gRPC, A2A, MCP, or another transport. The transport
+keeps its existing meaning; ASC describes the agent work carried through it.
 
 ## Five distinctions make state actionable
 

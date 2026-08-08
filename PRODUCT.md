@@ -8,19 +8,19 @@ web
 
 ## Users
 
-The primary users are framework authors and agent builders deciding how autonomous work reports state across runtime, protocol, provider, and application boundaries. They need semantics that software can act on without reconstructing intent from exceptions, logs, strings, or framework-specific enums.
+The primary users are framework authors and agent builders deciding how agents report state to applications, runtimes, tools, and other systems. They need a shared vocabulary that software can act on without reconstructing meaning from exceptions, logs, strings, or framework-specific state names.
 
 Secondary users are protocol implementers and contributors evaluating, testing, and evolving the experimental specification.
 
 ## Product Purpose
 
-Agent Status Codes (ASC) defines a shared semantic control layer for autonomous work: what an agent is doing, what happened at a declared scope, what remains true, and what may safely happen next.
+Agent Status Codes (ASC) defines a shared vocabulary for communication between agents and applications: what an agent is doing, what happened at a declared scope, what remains true, and what may safely happen next.
 
 Success means independently built runtimes, agents, tools, and user interfaces can exchange actionable task state without adopting the same framework or confusing transport success with agent outcome.
 
 ## Positioning
 
-ASC separates lifecycle phase, one scoped primary status, simultaneous conditions, point-in-time events, and an explicit side-effect-aware retry contract. Together, these constructs turn status from an implementation detail into an interoperability surface.
+ASC separates lifecycle phase, one scoped primary status, simultaneous conditions, point-in-time events, and an explicit side-effect-aware retry contract. Together, these constructs give independently built agents and applications enough common meaning to coordinate.
 
 ## Operating Context
 

@@ -39,14 +39,14 @@ The phase is deliberately coarse. It MUST NOT replace the primary status.
 
 Every status MUST declare its scope. ASC 0.1 defines:
 
-- `task` — an end-user or application goal;
-- `step` — one orchestration node or unit of work;
-- `tool_call` — one invocation of an external capability;
-- `model_call` — one model inference operation;
-- `handoff` — delegation from one agent to another;
-- `policy_decision` — approval, rejection, or transformation;
-- `evaluation` — a verification or quality assessment; and
-- `artefact` — a generated report, patch, message, or file.
+- `task`: an end-user or application goal;
+- `step`: one orchestration node or unit of work;
+- `tool_call`: one invocation of an external capability;
+- `model_call`: one model inference operation;
+- `handoff`: delegation from one agent to another;
+- `policy_decision`: approval, rejection, or transformation;
+- `evaluation`: a verification or quality assessment; and
+- `artefact`: a generated report, patch, message, or file.
 
 Extensions MAY define additional scopes using a namespaced identifier.
 

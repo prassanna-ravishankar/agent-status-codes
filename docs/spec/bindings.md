@@ -33,7 +33,7 @@ Retry-After: 2
 }
 ```
 
-For asynchronous work, HTTP reports the operation on the status resource—not the
+For asynchronous work, HTTP reports the operation on the status resource, not the
 outcome of the represented agent run:
 
 ```text

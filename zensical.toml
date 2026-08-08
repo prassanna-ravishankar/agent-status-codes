@@ -1,7 +1,7 @@
 [project]
 site_url = "https://agentstatuscodes.org/"
 site_name = "Agent Status Codes"
-site_description = "The semantic control layer for autonomous work."
+site_description = "A shared status-code protocol for agents and applications."
 site_author = "Agent Status Codes contributors"
 copyright = "Released under the MIT License. ASC 0.1 is an experimental draft."
 repo_url = "https://github.com/prassanna-ravishankar/agent-status-codes"
@@ -35,7 +35,7 @@ nav = [
   ] },
 ]
 
-extra_css = ["assets/stylesheets/asc-v2.css"]
+extra_css = ["assets/stylesheets/asc-v3.css"]
 
 [project.theme]
 language = "en"

@@ -10,35 +10,28 @@
 [![ASC 0.1](https://img.shields.io/badge/ASC-0.1%20experimental-1637f2)](https://agentstatuscodes.org/spec/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10172a.svg)](LICENSE)
 
-Agent Status Codes (ASC) is an open specification for portable,
-machine-readable agent state. It lets runtimes report whether work is running,
-waiting for a person, partly complete, or unsafe to retry. Each report says what
-happened at a declared scope, which facts remain true, and what may safely
-happen next.
+Agent Status Codes (ASC) is an open specification for communication between
+agents and the applications that use them. It gives both sides a portable,
+machine-readable vocabulary for progress, outcomes, human input, and recovery.
 
 **[Read the protocol at agentstatuscodes.org](https://agentstatuscodes.org)**
 
-## Why status needs a protocol boundary
+## Why agents need status codes
 
-An enum can be enough while one runtime owns the entire task. Across runtimes,
-tools, providers, and organisations, the same representation loses the context
-needed to coordinate safely:
+HTTP status codes let a client interpret a response without knowing how the
+server is built. Because both sides share the same vocabulary, the client can
+follow a redirect, request authentication, back off, or stop.
 
-- a human approval gate looks like a failure;
-- a successful HTTP response looks like a successful task;
-- one failed child hides useful completed work;
-- a transient error is replayed after its side effect may have committed; or
-- an unrecognised provider string becomes an unrecoverable state.
+Agent interactions have no equivalent common language. Each agent and
+application integration invents its own terms for running, waiting for a
+person, partial success, policy refusal, and retry. Applications must then
+translate those terms before they can decide what to display or do next.
 
-ASC separates the five facts needed to coordinate that work:
-
-```text
-agent status = phase + primary code + conditions + events + retry contract
-```
-
-The retry contract is explicit because retryability is not safety. A payment,
-message, booking, or other mutation may have committed even when its response
-was lost.
+ASC standardises that interaction. A report keeps five pieces of state
+distinct: lifecycle phase, one primary code, any conditions that remain true,
+events that occurred, and an explicit retry contract. The last part matters
+because a transient failure does not make replay safe. A payment, message,
+booking, or other mutation may have committed even when its response was lost.
 
 ## The code space
 

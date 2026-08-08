@@ -1,14 +1,11 @@
 # Core concepts
 
-ASC makes agent state actionable by refusing to collapse five different facts
-into one status field. This page is the shortest route to the model; the
+An ASC report carries five independent pieces of state. They travel together,
+but each answers a different question for the application receiving the report.
+This page is the shortest route to the model; the
 [status model](../spec/status-model.md) contains the normative rules.
 
-## One report, five independent signals
-
-<div class="asc-formula">
-agent status = phase + primary code + conditions + events + retry contract
-</div>
+## What an ASC report contains
 
 | Part | Question it answers | Example |
 |---|---|---|

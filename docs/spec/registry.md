@@ -17,7 +17,7 @@ The “retry” column is a default indication. It never overrides an explicit
 [retry contract](retry.md), idempotency requirements, side-effect certainty, or
 attempt budget.
 
-## 1xxx — Lifecycle and progress
+## 1xxx: Lifecycle and progress
 
 | Code | Name | Meaning | Default terminal | Retry |
 |---:|---|---|:---:|---|
@@ -26,7 +26,7 @@ attempt budget.
 | `1020` | `WAITING_DEPENDENCY` | Work is paused until a declared dependency becomes available. | No | Conditional |
 | `1030` | `RETRY_SCHEDULED` | Another attempt has been scheduled under policy. | No | Yes |
 
-## 2xxx — Successful outcomes
+## 2xxx: Successful outcomes
 
 | Code | Name | Meaning | Default terminal | Retry |
 |---:|---|---|:---:|---|
@@ -38,7 +38,7 @@ attempt budget.
 `SUCCESS_WITH_WARNINGS` means the goal was achieved. `PARTIAL_SUCCESS` means at
 least one independently requested result or side effect was not achieved.
 
-## 3xxx — Interrupted, deferred, or human-dependent
+## 3xxx: Interrupted, deferred, or human-dependent
 
 | Code | Name | Meaning | Default terminal | Retry |
 |---:|---|---|:---:|---|
@@ -50,7 +50,7 @@ least one independently requested result or side effect was not achieved.
 Human-dependent codes represent expected resumable control flow. Implementations
 SHOULD return them as values rather than programming exceptions.
 
-## 4xxx — Request, authorisation, capability, and policy
+## 4xxx: Request, authorisation, capability, and policy
 
 | Code | Name | Meaning | Default terminal | Retry |
 |---:|---|---|:---:|---|
@@ -67,7 +67,7 @@ SHOULD return them as values rather than programming exceptions.
 `GUARDRAIL_BLOCKED` is a policy decision about proposed content, context, or
 action. Producers MUST NOT use them as synonyms.
 
-## 5xxx — Transient operational failures
+## 5xxx: Transient operational failures
 
 | Code | Name | Meaning | Default terminal | Retry |
 |---:|---|---|:---:|---|
@@ -82,7 +82,7 @@ action. Producers MUST NOT use them as synonyms.
 `TIMEOUT` says that a deadline elapsed. It does not by itself say whether the
 operation committed or whether replay is safe.
 
-## 6xxx — Fatal, indeterminate, or integrity-threatening failures
+## 6xxx: Fatal, indeterminate, or integrity-threatening failures
 
 | Code | Name | Meaning | Default terminal | Retry |
 |---:|---|---|:---:|---|
@@ -96,7 +96,7 @@ operation committed or whether replay is safe.
 `RESULT_STATE_UNKNOWN` takes precedence over generic retry advice. Consumers
 MUST reconcile the original operation before repeating it.
 
-## 7xxx — Trust, quality, grounding, and verification
+## 7xxx: Trust, quality, grounding, and verification
 
 | Code | Name | Meaning | Default terminal | Retry |
 |---:|---|---|:---:|---|
@@ -111,7 +111,7 @@ MUST reconcile the original operation before repeating it.
 Heuristics, evaluator disagreement, and uncalibrated confidence SHOULD use
 `HALLUCINATION_SUSPECTED`.
 
-## 8xxx — Operational and efficiency events
+## 8xxx: Operational and efficiency events
 
 | Code | Name | Meaning |
 |---:|---|---|
@@ -123,7 +123,7 @@ Heuristics, evaluator disagreement, and uncalibrated confidence SHOULD use
 All `8xxx` assignments are event-only in ASC 0.1. They MUST NOT replace the
 primary outcome of the reported scope.
 
-## 9xxx — Extension space
+## 9xxx: Extension space
 
 | Range | Policy |
 |---|---|
