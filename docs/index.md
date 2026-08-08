@@ -5,6 +5,8 @@ hide:
 
 <div class="asc-hero" markdown>
 
+<div class="asc-hero-copy" markdown>
+
 <p class="asc-kicker">Experimental draft · ASC 0.1</p>
 
 # Status codes for autonomous agents
@@ -13,9 +15,26 @@ A shared, machine-readable vocabulary for what an agent is doing, what happened,
 and what can safely happen next.
 
 [Read the specification](spec/index.md){ .md-button .md-button--primary }
-[Why ASC exists](why.md){ .md-button }
+[Start implementing](get-started/implementation.md){ .md-button }
 
 </div>
+
+<figure class="asc-hero-visual">
+  <video autoplay muted loop playsinline preload="metadata"
+    poster="assets/images/asc-signal.png"
+    onloadedmetadata="if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) this.pause()"
+    aria-label="Five agent status layers converging into one machine-readable status">
+    <source src="assets/images/asc-signal.webm" type="video/webm">
+  </video>
+</figure>
+
+</div>
+
+## Built for implementers
+
+Start with the [core concepts](get-started/concepts.md), then follow the
+[producer and consumer checklist](get-started/implementation.md). The complete
+normative requirements remain in [ASC 0.1](spec/index.md).
 
 ```json title="A status that software can act on"
 {
@@ -79,6 +98,12 @@ overwriting another.
 | `9xxx` | Extensions, private use, experiments, and reserved space |
 
 [Browse the core registry →](spec/registry.md)
+
+## Evolve the protocol in public
+
+Substantial changes belong in an ASC Request for Comments. The
+[RFC area](rfcs/index.md) provides a durable home for proposals, discussion,
+implementation evidence, and the decisions that shape future versions.
 
 !!! warning "Draft status"
 

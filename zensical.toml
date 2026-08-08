@@ -9,8 +9,13 @@ repo_name = "prassanna-ravishankar/agent-status-codes"
 edit_uri = "edit/main/docs/"
 
 nav = [
-  { "Overview" = "index.md" },
-  { "Why ASC" = "why.md" },
+  { "Get started" = [
+    { "Introduction" = "index.md" },
+    { "Why ASC" = "why.md" },
+    { "Core concepts" = "get-started/concepts.md" },
+    { "Implement ASC" = "get-started/implementation.md" },
+    { "Examples" = "examples.md" },
+  ] },
   { "Specification" = [
     { "ASC 0.1" = "spec/index.md" },
     { "Status model" = "spec/status-model.md" },
@@ -20,14 +25,22 @@ nav = [
     { "Protocol bindings" = "spec/bindings.md" },
     { "Security and privacy" = "spec/security.md" },
   ] },
-  { "Examples" = "examples.md" },
-  { "Contributing" = "contributing.md" },
+  { "RFCs" = [
+    { "About RFCs" = "rfcs/index.md" },
+    { "RFC process" = "rfcs/process.md" },
+    { "RFC template" = "rfcs/template.md" },
+  ] },
+  { "Project" = [
+    { "Contributing" = "contributing.md" },
+  ] },
 ]
 
 extra_css = ["assets/stylesheets/asc.css"]
 
 [project.theme]
 language = "en"
+logo = "assets/images/asc-mark.png"
+favicon = "assets/images/asc-mark.png"
 features = [
   "content.action.edit",
   "content.code.copy",
@@ -39,15 +52,14 @@ features = [
   "navigation.instant.prefetch",
   "navigation.path",
   "navigation.sections",
+  "navigation.tabs",
+  "navigation.tabs.sticky",
   "navigation.top",
   "navigation.tracking",
   "search.highlight",
   "search.suggest",
   "toc.follow",
 ]
-
-[project.theme.icon]
-logo = "lucide/activity"
 
 [project.theme.font]
 text = "Inter"

@@ -12,6 +12,7 @@ ASC 0.1 is an experimental draft released under the MIT License.
 
 - `docs/` contains the public Zensical website and specification.
 - `docs/spec/registry.md` is the authoritative human-readable code registry.
+- `docs/rfcs/` is the durable proposal space for substantial future changes.
 - `agent-status-codes.md` is research output and editorial source material. It
   is not normative and must not be published verbatim.
 - `zensical.toml` defines site navigation and presentation.
@@ -81,5 +82,7 @@ verified.
 - Preserve unrelated user changes in a dirty worktree.
 - Keep generated `site/` output out of version control.
 - Update navigation when adding, moving, or removing public pages.
+- Start RFCs from `docs/rfcs/template.md` and add accepted filenames to the RFC
+  navigation section.
 - A change to a registry entry should update relevant examples and bindings.
 - CI must pass before deployment.
