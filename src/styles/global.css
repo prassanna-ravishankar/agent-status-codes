@@ -52,7 +52,6 @@ button, input { font: inherit; }
 .envelope-head { display: flex; justify-content: space-between; padding: .7rem 1rem; border-bottom: 1px solid var(--line); font: 600 11px/1 'IBM Plex Mono', monospace; color: var(--muted); letter-spacing: .06em; }
 .envelope pre { margin: 0; padding: 1.25rem; overflow: auto; background: var(--paper); font: 14px/1.65 'IBM Plex Mono', monospace; }
 .envelope code { display: block; counter-reset: line; }
-.envelope .line { display: block; }
 .envelope b { color: #0f7b55; font-weight: 500; }
 .envelope em { color: #c42b2b; font-style: normal; }
 .envelope i { color: #7a5af8; font-style: normal; }
