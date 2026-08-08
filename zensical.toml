@@ -35,7 +35,7 @@ nav = [
   ] },
 ]
 
-extra_css = ["assets/stylesheets/asc.css"]
+extra_css = ["assets/stylesheets/asc-v2.css"]
 
 [project.theme]
 language = "en"
