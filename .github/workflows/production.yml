@@ -56,7 +56,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: prassanna-ravishankar/clusterkit/.github/workflows/deploy-app.yml@main
+    uses: prassanna-ravishankar/clusterkit/.github/workflows/deploy-app.yml@deploy-app/v1
     with:
       chart_path: helm/agent-status-codes
       release: agent-status-codes
