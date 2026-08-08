@@ -1,12 +1,18 @@
+<p align="center">
+  <a href="https://agentstatuscodes.org" aria-label="Agent Status Codes">
+    <img src="docs/assets/images/asc-mark-v2.svg" width="96" height="96" alt="Agent Status Codes mark">
+  </a>
+</p>
+
 # Agent Status Codes
 
 [![CI](https://github.com/prassanna-ravishankar/agent-status-codes/actions/workflows/ci.yml/badge.svg)](https://github.com/prassanna-ravishankar/agent-status-codes/actions/workflows/ci.yml)
 [![ASC 0.1](https://img.shields.io/badge/ASC-0.1%20experimental-1637f2)](https://agentstatuscodes.org/spec/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10172a.svg)](LICENSE)
 
-Agent runtimes can exchange tasks, yet they lack a common way to report whether
-that work is running, waiting for a person, partly complete, or unsafe to retry.
-Agent Status Codes (ASC) defines a portable representation of that state: what
+Agent Status Codes (ASC) is an open specification for portable,
+machine-readable agent state. It lets runtimes report whether work is running,
+waiting for a person, partly complete, or unsafe to retry. Each report says what
 happened at a declared scope, which facts remain true, and what may safely
 happen next.
 
