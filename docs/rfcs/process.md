@@ -6,7 +6,7 @@ large governance system.
 
 ## 1. Open a proposal
 
-Copy the [RFC template](template.md) into `docs/rfcs/NNNN-short-name.md`. Use
+Copy the [RFC template](/rfcs/template/) into `docs/rfcs/NNNN-short-name.md`. Use
 `0000` while the pull request is unnumbered. Include at least:
 
 - the interoperability problem;

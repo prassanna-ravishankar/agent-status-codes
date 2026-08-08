@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Search">
+  <main class="search-page shell">
+    <p class="eyebrow">Agent Status Codes</p>
+    <h1>Search the specification</h1>
+    <div id="search"></div>
+  </main>
+</BaseLayout>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.PagefindUI) new window.PagefindUI({ element: '#search', showSubResults: true, resetStyles: false });
+  });
+</script>

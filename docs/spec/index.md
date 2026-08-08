@@ -35,13 +35,13 @@ normative requirements in this specification.
 
 ## Specification map
 
-- [Status model](status-model.md) defines phases, scopes, status kinds, and
+- [Status model](/spec/status-model/) defines phases, scopes, status kinds, and
   composition.
-- [Code registry](registry.md) defines the experimental core assignments.
-- [Status envelope](envelope.md) defines the canonical JSON representation.
-- [Retry contract](retry.md) defines safe replay and side-effect handling.
-- [Protocol bindings](bindings.md) defines projections into existing protocols.
-- [Security and privacy](security.md) defines disclosure and integrity rules.
+- [Code registry](/spec/registry/) defines the experimental core assignments.
+- [Status envelope](/spec/envelope/) defines the canonical JSON representation.
+- [Retry contract](/spec/retry/) defines safe replay and side-effect handling.
+- [Protocol bindings](/spec/bindings/) defines projections into existing protocols.
+- [Security and privacy](/spec/security/) defines disclosure and integrity rules.
 
 ## Compatibility contract
 

@@ -31,7 +31,7 @@ The primary public journey is to understand the model, inspect a concrete status
 ## Capabilities and Constraints
 
 - ASC 0.1 is an experimental draft, not a frozen standard.
-- The specification is published with Zensical and released under the MIT License.
+- The specification is published as a static Astro site and released under the MIT License.
 - Numeric meanings, scope, terminality, retry safety, and side-effect certainty are protocol facts, not visual metaphors.
 - Human input, approval, and authentication are resumable control flow rather than generic failure.
 - Transport outcome and agent-task outcome remain separate.
@@ -64,4 +64,4 @@ The primary public journey is to understand the model, inspect a concrete status
 
 ## Accessibility & Inclusion
 
-The public specification must remain keyboard navigable, readable without motion, legible at narrow and wide viewports, and usable with system light, dark, contrast, and reduced-motion preferences.
+The public specification must remain keyboard navigable, readable without motion, legible at narrow and wide viewports, and usable with system contrast and reduced-motion preferences. ASC 0.1 uses one documented light reference theme; a dark theme is not part of the current publishing contract.

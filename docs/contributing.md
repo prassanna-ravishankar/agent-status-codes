@@ -27,17 +27,17 @@ assignments in the `0.x` series remain experimental.
 
 ## Editing the specification
 
-The site is built with Zensical:
+The site is built with Astro:
 
 ```sh
-uv sync
-uv run zensical serve
+npm ci
+npm run dev
 ```
 
 Run a strict production build before submitting a change:
 
 ```sh
-uv run zensical build --clean --strict
+npm test
 ```
 
 ## Licence

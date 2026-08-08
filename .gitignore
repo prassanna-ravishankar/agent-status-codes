@@ -2,3 +2,6 @@
 .venv/
 site/
 __pycache__/
+node_modules/
+dist/
+.astro/

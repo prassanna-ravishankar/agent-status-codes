@@ -14,11 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v7
+      - uses: actions/setup-node@v4
         with:
-          enable-cache: true
-      - run: uv sync --frozen
-      - run: uv run zensical build --clean --strict
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
 
   helm:
     name: Validate Helm chart

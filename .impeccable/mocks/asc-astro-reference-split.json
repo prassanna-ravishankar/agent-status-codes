@@ -1,0 +1,8 @@
+{
+  "surface": "src/pages/index.astro",
+  "mode": "replacement",
+  "direction": "reference-split",
+  "approved": false,
+  "seed": "95000af6",
+  "prompt": "Three-rail protocol reference with compact navigation, class links, status anatomy, and restrained technical typography."
+}

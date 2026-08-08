@@ -14,7 +14,7 @@ This page is the authoritative registry for the ASC 0.1 experimental draft.
 7. Assigned codes are sparse to leave room for related concepts.
 
 The “retry” column is a default indication. It never overrides an explicit
-[retry contract](retry.md), idempotency requirements, side-effect certainty, or
+[retry contract](/spec/retry/), idempotency requirements, side-effect certainty, or
 attempt budget.
 
 ## 1xxx: Lifecycle and progress

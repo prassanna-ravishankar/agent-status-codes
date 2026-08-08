@@ -48,7 +48,7 @@ before selecting the parent status.
 ## Retry and replay
 
 Automated retry can duplicate messages, payments, bookings, or other external
-actions. A retry-safe implementation MUST enforce the [retry contract](retry.md)
+actions. A retry-safe implementation MUST enforce the [retry contract](/spec/retry/)
 and MUST reconcile `RESULT_STATE_UNKNOWN` before replay.
 
 ## Data minimisation

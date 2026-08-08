@@ -1,0 +1,26 @@
+{
+  "name": "agent-status-codes",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build:site": "astro build",
+    "build": "astro build && pagefind --site dist",
+    "check": "astro check",
+    "check:links": "node scripts/check-links.mjs",
+    "test": "npm run check && npm run build && npm run check:links"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "latest",
+    "@fontsource/ibm-plex-mono": "latest",
+    "@fontsource-variable/ibm-plex-sans": "latest",
+    "astro": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "cheerio": "latest",
+    "pagefind": "latest",
+    "typescript": "latest"
+  }
+}

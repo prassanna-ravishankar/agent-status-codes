@@ -55,7 +55,7 @@ Do not replace the reason with a generic `WAITING` state.
 ```
 
 Never infer `safe` only from the numeric class. See the
-[retry contract](../spec/retry.md) before automating replay.
+[retry contract](/spec/retry/) before automating replay.
 
 ## 4. Handle values you do not recognise
 
@@ -106,4 +106,4 @@ ASC can be embedded in HTTP Problem Details, gRPC status details, A2A extensions
 MCP tool results, and OpenTelemetry attributes. Use the native protocol outcome
 for its own layer and ASC for agent semantics.
 
-[Choose a protocol binding →](../spec/bindings.md)
+[Choose a protocol binding →](/spec/bindings/)

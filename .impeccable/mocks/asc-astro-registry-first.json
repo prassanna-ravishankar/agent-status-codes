@@ -1,0 +1,8 @@
+{
+  "surface": "src/pages/index.astro",
+  "mode": "replacement",
+  "direction": "registry-first",
+  "approved": false,
+  "seed": "95000af6",
+  "prompt": "Registry-first standards site with compact top navigation, short problem statement, search and class filters, and the authoritative table in the first viewport."
+}

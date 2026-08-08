@@ -4,11 +4,9 @@ Requests for Comments (RFCs) are the durable mechanism for proposing substantial
 changes to Agent Status Codes, collecting implementation feedback, and recording
 why the specification evolved.
 
-!!! info "The RFC space is open"
-
-    There are no numbered ASC RFCs yet. Start with the
-    [RFC template](template.md) and open a pull request when a concrete proposal
-    is ready for discussion.
+> **The RFC space is open.** There are no numbered ASC RFCs yet. Start with the
+> [RFC template](/rfcs/template/) and open a pull request when a concrete
+> proposal is ready for discussion.
 
 ## When to write an RFC
 
@@ -46,5 +44,6 @@ request history.
 |---:|---|---|---|
 | None | No RFCs published yet | Not applicable | Not applicable |
 
-[Read the process →](process.md){ .md-button .md-button--primary }
-[Use the template →](template.md){ .md-button }
+[Read the process →](/rfcs/process/)
+
+[Use the template →](/rfcs/template/)

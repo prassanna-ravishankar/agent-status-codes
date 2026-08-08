@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">Agent Status Codes</title>
+  <path d="M18 7H8v34h10M30 7h10v34H30" fill="none" stroke="#0E1116" stroke-width="3"/>
+  <g stroke-width="2">
+    <path d="M17 14h14" stroke="#2F6BFF"/><path d="M17 19h14" stroke="#0F8A5F"/><path d="M17 24h14" stroke="#C2740B"/><path d="M17 29h14" stroke="#C42B2B"/><path d="M17 34h14" stroke="#8E4BA8"/>
+  </g>
+</svg>

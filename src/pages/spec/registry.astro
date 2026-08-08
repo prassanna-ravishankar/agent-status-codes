@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRegistry } from '../../lib/registry';
+const registry = getRegistry();
+const count = registry.reduce((sum, item) => sum + item.entries.length, 0);
+---
+<BaseLayout title="Code registry" description="The authoritative Agent Status Codes 0.1 registry.">
+  <main class="registry-page shell" data-pagefind-body>
+    <header class="registry-header">
+      <p class="eyebrow">ASC 0.1 · Authoritative registry</p>
+      <h1>Code registry</h1>
+      <p>{count} experimental assignments across nine numeric classes. Consumers that do not recognise a specific code fall back to its first digit.</p>
+    </header>
+    <div class="registry-controls" aria-label="Registry controls">
+      <label class="registry-search"><span>Search</span><input id="registry-search" type="search" placeholder="Code, name, or meaning" autocomplete="off" /></label>
+      <div class="filters" role="group" aria-label="Filter by class">
+        <button class="active" data-class="all" type="button">All</button>
+        {registry.map((item) => <button type="button" data-class={item.digit} style={`--class-color:${item.color}`}>{item.digit}xxx</button>)}
+      </div>
+      <p id="registry-result-count" aria-live="polite">Showing all {count} codes</p>
+    </div>
+    <div class="registry-list">
+      {registry.map((item) => <section class="registry-class" id={item.anchor} data-class-section={item.digit}>
+        <header style={`--class-color:${item.color}`}>
+          <span>{item.digit}xxx</span><h2>{item.title}</h2><a href={`#${item.anchor}`} aria-label={`Link to ${item.digit}xxx`}>#</a>
+        </header>
+        <div class="registry-table-wrap">
+          <table>
+            <thead><tr><th>Code</th><th>Name</th><th>Meaning</th><th>Terminal</th><th>Retry</th></tr></thead>
+            <tbody>{item.entries.map((entry) => <tr data-registry-row data-class={entry.digit} data-search={`${entry.code} ${entry.name} ${entry.meaning}`.toLowerCase()} id={`asc-${entry.code}-${entry.name.toLowerCase().replaceAll('_', '-')}`}>
+              <td><a href={`#asc-${entry.code}-${entry.name.toLowerCase().replaceAll('_', '-')}`}>{entry.code}</a></td><td><code>{entry.name}</code></td><td>{entry.meaning}</td><td>{entry.terminal}</td><td>{entry.retry}</td>
+            </tr>)}</tbody>
+          </table>
+        </div>
+      </section>)}
+    </div>
+  </main>
+</BaseLayout>
+<script>
+  const input = document.querySelector<HTMLInputElement>('#registry-search');
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-class]')];
+  const rows = [...document.querySelectorAll<HTMLElement>('[data-registry-row]')];
+  const sections = [...document.querySelectorAll<HTMLElement>('[data-class-section]')];
+  const count = document.querySelector<HTMLElement>('#registry-result-count');
+  const classLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-code-class]')];
+  let activeClass = 'all';
+  function filterRegistry() {
+    const query = input?.value.trim().toLowerCase() ?? '';
+    let visible = 0;
+    rows.forEach((row) => {
+      const matchesClass = activeClass === 'all' || row.dataset.class === activeClass;
+      const matchesQuery = !query || row.dataset.search?.includes(query);
+      row.hidden = !(matchesClass && matchesQuery);
+      if (!row.hidden) visible += 1;
+    });
+    sections.forEach((section) => {
+      section.hidden = ![...section.querySelectorAll('[data-registry-row]')].some((row) => !(row as HTMLElement).hidden);
+    });
+    if (count) count.textContent = `Showing ${visible} ${visible === 1 ? 'code' : 'codes'}`;
+  }
+  input?.addEventListener('input', filterRegistry);
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    activeClass = button.dataset.class ?? 'all';
+    buttons.forEach((item) => item.classList.toggle('active', item === button));
+    filterRegistry();
+  }));
+  function setActiveClassLink() {
+    const threshold = window.scrollY + 145;
+    const visibleSections = sections.filter((section) => !section.hidden);
+    const current = visibleSections.reduce((active, section) => section.offsetTop <= threshold ? section : active, visibleSections[0]);
+    classLinks.forEach((link) => {
+      const active = link.dataset.codeClass === current?.dataset.classSection;
+      link.toggleAttribute('aria-current', active);
+    });
+  }
+  function scrollToHash(hash: string) {
+    const target = document.getElementById(decodeURIComponent(hash.replace(/^#/, '')));
+    if (target) window.scrollTo({ top: target.offsetTop - 108, behavior: 'auto' });
+  }
+  classLinks.forEach((link) => link.addEventListener('click', (event) => {
+    const url = new URL(link.href);
+    if (url.pathname === location.pathname && url.hash) {
+      event.preventDefault();
+      history.pushState(null, '', url.hash);
+      scrollToHash(url.hash);
+      setActiveClassLink();
+    }
+  }));
+  window.addEventListener('scroll', setActiveClassLink, { passive: true });
+  document.fonts.ready.then(() => {
+    if (location.hash) scrollToHash(location.hash);
+    setActiveClassLink();
+  });
+</script>

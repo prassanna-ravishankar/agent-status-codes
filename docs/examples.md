@@ -1,7 +1,7 @@
 # Examples
 
 These examples illustrate how status, scope, and retry semantics compose. They
-are informative; the [specification](spec/index.md) is normative.
+are informative; the [specification](/spec/) is normative.
 
 ## Human approval before purchase
 

@@ -97,4 +97,4 @@ without sharing an implementation. ASC 0.1 is an early attempt to define that
 common layer, and implementation evidence will determine where it needs to
 change.
 
-[Explore the code registry →](spec/registry.md)
+[Explore the code registry →](/spec/registry/)

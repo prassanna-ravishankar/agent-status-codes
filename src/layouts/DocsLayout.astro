@@ -1,0 +1,24 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { sections } from '../data/navigation';
+import type { MarkdownHeading } from 'astro';
+interface Props { title: string; headings?: MarkdownHeading[]; }
+const title: string = Astro.props.title;
+const headings: MarkdownHeading[] = Astro.props.headings ?? [];
+const current = Astro.url.pathname;
+const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+<BaseLayout title={title}>
+  <div class="docs-shell shell">
+    <aside class="docs-nav" aria-label="Documentation navigation">
+      {sections.map((section) => <section>
+        <h2>{section.label}</h2>
+        <ul>{section.links.map(([label, href]) => <li><a href={href} aria-current={current === href ? 'page' : undefined}>{label}</a></li>)}</ul>
+      </section>)}
+    </aside>
+    <main class="prose" data-pagefind-body><slot /></main>
+    <aside class="toc" aria-label="On this page">
+      {toc.length > 0 && <><h2>On this page</h2><ol>{toc.map((heading) => <li class={`depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></>}
+    </aside>
+  </div>
+</BaseLayout>

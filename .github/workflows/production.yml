@@ -1,6 +1,9 @@
 name: Deploy to production
 
 on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
   workflow_dispatch:
 
 concurrency:
@@ -12,18 +15,21 @@ env:
   GKE_CLUSTER: clusterkit
   GKE_REGION: us-central1
   IMAGE: us-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/gcr.io/agent-status-codes
-  IMAGE_TAG: ${{ github.sha }}
+  IMAGE_TAG: ${{ github.event.workflow_run.head_sha || github.sha }}
   NAMESPACE: agent-status-codes
 
 jobs:
   build:
     name: Build and push
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.IMAGE_TAG }}
       - uses: docker/setup-buildx-action@v3
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
@@ -59,6 +65,8 @@ jobs:
       url: https://agentstatuscodes.org
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.IMAGE_TAG }}
       - uses: azure/setup-helm@v4
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2

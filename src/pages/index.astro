@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getRegistry } from '../lib/registry';
+const registry = getRegistry();
+const count = registry.reduce((sum, item) => sum + item.entries.length, 0);
+---
+<BaseLayout title="Agent Status Codes" description="A shared, machine-readable status vocabulary for agents and applications.">
+  <main data-pagefind-body>
+    <section class="home-hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Open protocol · ASC 0.1 experimental</p>
+        <h1>Status codes for agents</h1>
+        <p class="lede">HTTP status codes let a client act on a response without first learning the server's vocabulary. ASC gives agents and applications the same shared language.</p>
+        <div class="actions">
+          <a class="button primary" href="/spec/registry/">Browse the registry</a>
+          <a class="button" href="/spec/">Read ASC 0.1</a>
+        </div>
+      </div>
+      <figure class="envelope" aria-label="Example ASC status envelope">
+        <div class="envelope-head"><span>STATUS ENVELOPE</span><span>JSON</span></div>
+        <pre><code><span class="line">&#123;</span>
+<span class="line">  "spec_version": <b>"0.1.0"</b>,</span>
+<span class="line">  "status": &#123;</span>
+<span class="line">    "code": <em>3002</em>,</span>
+<span class="line">    "name": <b>"HUMAN_APPROVAL_REQUIRED"</b>,</span>
+<span class="line">    "phase": <b>"WAITING"</b>,</span>
+<span class="line">    "terminal": <i>false</i></span>
+<span class="line">  &#125;,</span>
+<span class="line">  "retry": &#123; "safe": <i>false</i> &#125;</span>
+<span class="line">&#125;</span></code></pre>
+        <figcaption>Transport success and agent outcome remain separate</figcaption>
+      </figure>
+    </section>
+
+    <nav class="home-classes shell" aria-label="Browse by code class">
+      {registry.map((item) => <a href={`/spec/registry/#${item.anchor}`} style={`--class-color:${item.color}`}>
+        <span>[{item.digit}xxx]</span><strong>{item.short}</strong>
+      </a>)}
+    </nav>
+
+    <section class="home-intro shell">
+      <div>
+        <p class="eyebrow">The protocol</p>
+        <h2>One vocabulary across agent boundaries</h2>
+      </div>
+      <div>
+        <p>Agent integrations often define their own terms for running, waiting for a person, partial success, policy refusal, and recovery. ASC defines portable meanings once so software can decide what to show and what to do next.</p>
+        <a class="text-link" href="/why/">Why ASC exists <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="registry-preview shell">
+      <div class="section-heading"><div><p class="eyebrow">{count} assigned codes</p><h2>Enter the code space</h2></div><a class="text-link" href="/spec/registry/">Open the full registry <span aria-hidden="true">→</span></a></div>
+      <div class="preview-grid">
+        {registry.slice(0, 4).map((item) => <a href={`/spec/registry/#${item.anchor}`} style={`--class-color:${item.color}`}>
+          <span>{item.digit}xxx</span><h3>{item.title}</h3><p>{item.entries.length} assigned codes</p>
+        </a>)}
+        <a class="all-classes" href="/spec/registry/"><span>5xxx to 9xxx</span><h3>Failures, trust, operations, and extensions</h3><p>Continue through the registry</p></a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

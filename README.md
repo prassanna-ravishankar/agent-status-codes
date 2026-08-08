@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://agentstatuscodes.org" aria-label="Agent Status Codes">
-    <img src="docs/assets/images/asc-mark-v2.svg" width="96" height="96" alt="Agent Status Codes mark">
+    <img src="public/asc-mark.svg" width="72" height="72" alt="Agent Status Codes mark">
   </a>
 </p>
 
@@ -79,18 +79,19 @@ terminality applies to that scope rather than the entire workflow.
 
 ## Work on the specification
 
-The site uses [Zensical](https://zensical.org/) with a version pinned in
-`uv.lock`.
+The site is a static [Astro](https://astro.build/) application. The protocol
+content remains in Markdown under `docs/`; the registry page is generated from
+the authoritative `docs/spec/registry.md` file.
 
 ```sh
-uv sync
-uv run zensical serve
+npm ci
+npm run dev
 ```
 
 Run the documentation gate before submitting changes:
 
 ```sh
-uv run zensical build --clean --strict
+npm test
 ```
 
 Substantial interoperability changes begin with the

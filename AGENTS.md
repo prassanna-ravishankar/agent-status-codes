@@ -10,12 +10,15 @@ ASC 0.1 is an experimental draft released under the MIT License.
 
 ## Repository map
 
-- `docs/` contains the public Zensical website and specification.
+- `docs/` contains the public specification and explanatory Markdown.
 - `docs/spec/registry.md` is the authoritative human-readable code registry.
+- `src/` contains the Astro publishing layer, layouts, components, and styles.
+- `src/lib/registry.ts` derives the interactive registry from the authoritative
+  Markdown. Do not duplicate registry assignments in frontend data.
 - `docs/rfcs/` is the durable proposal space for substantial future changes.
 - `agent-status-codes.md` is research output and editorial source material. It
   is not normative and must not be published verbatim.
-- `zensical.toml` defines site navigation and presentation.
+- `astro.config.mjs` defines the static site build.
 - `helm/agent-status-codes/` deploys the site to ClusterKit.
 - `.github/workflows/ci.yml` validates docs, Helm, and the container.
 - `.github/workflows/production.yml` deploys `main` to production.
@@ -41,17 +44,17 @@ ASC 0.1 is an experimental draft released under the MIT License.
 
 ## Local development
 
-Use the pinned Zensical dependency through `uv`:
+Install the pinned Node dependencies and run Astro:
 
 ```sh
-uv sync
-uv run zensical serve
+npm ci
+npm run dev
 ```
 
 Before handing off changes, run:
 
 ```sh
-uv run zensical build --clean --strict
+npm test
 helm lint helm/agent-status-codes
 helm template agent-status-codes helm/agent-status-codes \
   --namespace agent-status-codes > /dev/null
@@ -80,7 +83,7 @@ verified.
 ## Change hygiene
 
 - Preserve unrelated user changes in a dirty worktree.
-- Keep generated `site/` output out of version control.
+- Keep generated `dist/` output out of version control.
 - Update navigation when adding, moving, or removing public pages.
 - Start RFCs from `docs/rfcs/template.md` and add accepted filenames to the RFC
   navigation section.

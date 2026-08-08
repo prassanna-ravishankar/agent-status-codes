@@ -3,7 +3,7 @@
 An ASC report carries five independent pieces of state. They travel together,
 but each answers a different question for the application receiving the report.
 This page is the shortest route to the model; the
-[status model](../spec/status-model.md) contains the normative rules.
+[status model](/spec/status-model/) contains the normative rules.
 
 ## What an ASC report contains
 
@@ -61,4 +61,4 @@ A dependency failure can be transient while replay remains unsafe. If a payment,
 message, booking, or other mutation may already have committed, the correct
 status is `RESULT_STATE_UNKNOWN`. Reconcile first; never blindly retry.
 
-[Implement the minimum ASC contract →](implementation.md)
+[Implement the minimum ASC contract →](/get-started/implementation/)

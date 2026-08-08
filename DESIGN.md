@@ -1,235 +1,183 @@
 ---
 name: Agent Status Codes
-description: Civic status wayfinding for a portable agent protocol.
+description: Engineered standards reference for an open agent protocol
 colors:
-  paper: "#f4f2ea"
-  surface: "#fffef9"
-  ink: "#10172a"
-  muted: "#52606d"
-  rule: "rgba(16, 23, 42, 0.22)"
-  signal-blue: "#1637f2"
-  signal-red: "#b42318"
-  signal-red-field: "#ff5038"
-  signal-yellow: "#7a5000"
-  signal-yellow-field: "#ffca2c"
-  signal-mint: "#a8edc3"
-  signal-green: "#087443"
-  signal-cyan: "#006a7a"
-  signal-violet: "#7149c6"
-  focus: "#7c4a00"
+  ink: "#0e1116"
+  body-ink: "#262c35"
+  soft-ink: "#303742"
+  muted: "#5a6479"
+  paper: "#ffffff"
+  page: "#f6f8fa"
+  soft: "#eef1f5"
+  blue-field: "#eef3ff"
+  rule: "#d7dce3"
+  rule-strong: "#aeb6c2"
+  blue: "#1f57d6"
+  code-green: "#0f7b55"
+  class-1: "#2f6bff"
+  class-2: "#0f8a5f"
+  class-3: "#c2740b"
+  class-4: "#7a5af8"
+  class-5: "#e2622b"
+  class-6: "#c42b2b"
+  class-7: "#0e7c86"
+  class-8: "#5a6479"
+  class-9: "#8e4ba8"
 typography:
-  display:
-    fontFamily: "Barlow Condensed, sans-serif"
-    fontSize: "clamp(2.8rem, 5vw, 4.6rem)"
-    fontWeight: 700
-    lineHeight: 0.98
-    letterSpacing: "-0.025em"
-  headline:
-    fontFamily: "Barlow Condensed, sans-serif"
-    fontSize: "clamp(2rem, 3.2vw, 3rem)"
-    fontWeight: 700
-    lineHeight: 0.98
-    letterSpacing: "-0.025em"
-  title:
-    fontFamily: "Barlow Condensed, sans-serif"
-    fontSize: "1.55rem"
-    fontWeight: 700
-    lineHeight: 0.98
-    letterSpacing: "-0.025em"
   body:
-    fontFamily: "Atkinson Hyperlegible, sans-serif"
-    fontSize: "0.84rem"
-    fontWeight: 400
-    lineHeight: 1.7
-    letterSpacing: "normal"
-  label:
-    fontFamily: "Barlow Condensed, sans-serif"
-    fontSize: "0.78rem"
-    fontWeight: 700
-    lineHeight: 1
-    letterSpacing: "0.035em"
-  code:
-    fontFamily: "Source Code Pro, monospace"
-    fontSize: "0.76rem"
-    fontWeight: 400
-    lineHeight: 1.7
-    letterSpacing: "normal"
-rounded:
-  square: "0"
-spacing:
-  xs: "0.7rem"
-  sm: "0.8rem"
-  md: "1rem"
-  lg: "1.2rem"
-  section: "2.4rem"
-components:
-  navigation-link:
-    textColor: "{colors.ink}"
-    typography: "{typography.label}"
-  navigation-link-active:
-    textColor: "{colors.signal-blue}"
-    typography: "{typography.label}"
-  table-header:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.paper}"
-    typography: "{typography.label}"
-    rounded: "{rounded.square}"
-    padding: "0.7rem 0.8rem"
-  table-cell:
-    textColor: "{colors.ink}"
-    typography: "{typography.code}"
-    padding: "0.7rem 0.8rem"
-  code-container:
-    backgroundColor: "#e9e7df"
-    textColor: "#111827"
-    typography: "{typography.code}"
-    rounded: "{rounded.square}"
-  notice:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    typography: "{typography.body}"
-    rounded: "{rounded.square}"
-    padding: "{spacing.md}"
+    fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif"
+    fontSize: "16px"
+    lineHeight: 1.55
+  mono:
+    fontFamily: "IBM Plex Mono, monospace"
+    fontSize: "14px"
+    lineHeight: 1.55
+  display:
+    fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif"
+    fontSize: "clamp(42px, 5vw, 68px)"
+    lineHeight: 0.98
+    letterSpacing: "-0.045em"
+  label-xs: { fontFamily: "IBM Plex Mono, monospace", fontSize: "11px", lineHeight: 1.2 }
+  label: { fontFamily: "IBM Plex Mono, monospace", fontSize: "12px", lineHeight: 1.3 }
+  small: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "13px", lineHeight: 1.45 }
+  nav: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "15px", lineHeight: 1.2 }
+  title-sm: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "18px", lineHeight: 1.25 }
+  intro: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "19px", lineHeight: 1.5 }
+  heading-sm: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "21px", lineHeight: 1.2 }
+  lead: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "23px", lineHeight: 1.45 }
+  heading: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "26px", lineHeight: 1.2 }
+  heading-md: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "28px", lineHeight: 1.15 }
+  heading-lg: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "32px", lineHeight: 1.05 }
+  page-sm: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "36px", lineHeight: 1.05 }
+  page: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "40px", lineHeight: 1 }
+  display-sm: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "48px", lineHeight: 0.98 }
+  display-md: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "52px", lineHeight: 0.98 }
+  display-lg: { fontFamily: "IBM Plex Sans Variable, system-ui, sans-serif", fontSize: "64px", lineHeight: 0.98 }
 ---
 
 # Design System: Agent Status Codes
 
 ## Overview
 
-**Creative North Star: "Civic Status Wayfinding"**
+**Creative north star: Engineered standards reference**
 
-The system uses the visual grammar of public infrastructure: paper-like fields, dark ink, one-pixel rules, compressed signage type, and colour assigned to routes and state. It is direct and functional. The interface stays flat, with hierarchy carried by typography, rules, fields, and alignment.
-
-Protocol pages are restrained reading surfaces. Their navigation, tables, code, and notices use the same wayfinding language without reproducing the homepage's expressive composition. Light and dark themes preserve roles rather than fixed appearances.
-
-**Key Characteristics:**
-
-- Flat paper and ink surfaces with visible structural rules.
-- Condensed headings and labels paired with hyperlegible body text.
-- Monospaced numerals and protocol identifiers.
-- Semantic colour used for navigation and status distinctions.
-- Square containers, explicit focus, and responsive reading layouts.
+ASC is precise, quiet, and easy to scan. The site uses protocol data as its
+visual material rather than adding an illustrative layer around it. The August
+2026 design-system ZIP is a visual brief, not a component library. The site
+adopts its compact navigation, IBM Plex typography, cool slate surfaces,
+numbered class colors, flat geometry, and searchable registry. It does not
+adopt the prototype's invented content, dashboard controls, severity model,
+HTTP mappings, or application-console components.
 
 ## Colors
 
-Warm paper and near-navy ink form the reading base. Saturated route colours identify links, active navigation, code classes, and status signals. The dark theme remaps the shared semantic variables to navy surfaces, warm text, and lighter signal colours.
+White and cool slate surfaces carry the content. Near-black ink provides the
+main contrast. An accessible dark blue marks links, focus, and active
+navigation. Code green is limited to example strings.
 
-### Primary
+Each numeric class has one stable color. Class color identifies a rail, filter,
+code marker, or section rule. Class labels use ink because several class colors
+do not meet text contrast on white. Color never carries meaning alone.
 
-- **Signal Blue:** The main interactive colour for links, active navigation, and the primary route signal.
-
-### Secondary
-
-- **Signal Red and Red Field:** Primary-status and request-policy signals. The dark red carries text on light surfaces; the bright field supports filled markers.
-- **Signal Yellow and Yellow Field:** Human-dependent and cautionary signals. The dark yellow carries readable text; the bright field supports filled markers.
-- **Signal Green, Cyan, and Violet:** Distinct routes for successful outcomes, conditions, trust, retry, and related protocol categories.
-- **Signal Mint:** A light supporting field within the route palette.
-
-### Neutral
-
-- **Paper:** The main page background in the light theme.
-- **Surface:** A slightly lighter field for headers and bounded content.
-- **Ink:** Primary text, strong fields, and table headers.
-- **Muted:** Supporting copy and secondary labels.
-- **Rule:** Low-contrast borders, dividers, and table structure.
-- **Focus:** A high-contrast keyboard outline that remains distinct from the blue link state.
-
-### Named Rules
-
-**The Route Colour Rule.** Assign signal colours to protocol meaning, navigation, or state. Do not scatter them through ordinary prose as decoration.
-
-**The Role-Preserving Theme Rule.** Dark mode changes the values of semantic roles. It does not change which roles a component uses.
+ASC 0.1 uses one light reference theme. System contrast preferences strengthen
+rules. Dark mode is outside the current publishing contract.
 
 ## Typography
 
-**Display Font:** Barlow Condensed with a sans-serif fallback  
-**Body Font:** Atkinson Hyperlegible with a sans-serif fallback  
-**Label/Mono Font:** Source Code Pro with a monospace fallback
+IBM Plex Sans is the reading and interface face. IBM Plex Mono is reserved for
+codes, field names, numeric classes, labels, and payloads. Headings use the sans
+face, compact line height, and restrained negative tracking. Body text stays at
+16 pixels with a readable measure.
 
-**Character:** Condensed display type reads like civic signage and gives long protocol headings a decisive silhouette. Atkinson Hyperlegible keeps dense documentation comfortable. Source Code Pro separates identifiers, numeric codes, and payloads from explanatory text.
-
-### Hierarchy
-
-- **Display:** Bold, tightly tracked, and fluid. Use for page titles with a short measure.
-- **Headline:** Bold and tightly tracked. Use for major document sections separated by a top rule.
-- **Title:** Bold and compact. Use for third-level headings.
-- **Body:** Regular with generous line height. Keep primary prose, lists, and paragraphs within a 72-character measure.
-- **Label:** Bold, compact, and usually uppercase. Use for masthead, tabs, navigation, and table headers.
-- **Code:** Regular monospaced text. Use for code blocks, identifiers, field values, and numeric statuses.
-
-### Named Rules
-
-**The Three-Voice Rule.** Use condensed type for orientation, hyperlegible type for explanation, and monospace for machine-readable values.
+Code styling belongs to real code, identifiers, and protocol values. Concepts
+must be expressed through prose, tables, or diagrams rather than decorative
+code blocks. The documented ramp covers the small labels, body sizes, and fluid
+heading endpoints used in production.
 
 ## Layout
 
-The site uses a wide outer grid capped at 92rem and a narrower reading measure inside it. Document content starts with 2.4rem of top space. Major sections use generous vertical separation and a one-pixel top rule. Tables can occupy the available content width while prose remains constrained.
+The top navigation is the primary orientation device. Protocol, Registry,
+Implement, and RFCs stay visible on wide screens. Search, version, and source
+control share the bar without competing with those destinations.
 
-At narrow viewports below 44.9844em, document padding and heading sizes reduce, and wide tables become horizontally scrollable. The underlying reading order remains linear. System colour preferences, reduced-motion preferences, and print output are supported.
+One nine-part class index appears per page. The homepage uses the labeled class
+index below its status envelope. Other pages use the compact class rail below
+the header. Both link to explicit authoritative registry anchors.
+
+Documentation pages use three rails when space permits: section navigation,
+the document, and an on-page contents list. Narrow screens preserve that
+reading order without fixed sidebars. Registry tables scroll horizontally
+rather than hiding fields.
 
 ## Elevation & Depth
 
-The system has no shadows. Paper and surface tones separate regions, while one-pixel rules define boundaries. Filled ink and signal fields create emphasis without simulated elevation. Gradients and translucent glass effects are absent.
-
-### Named Rules
-
-**The Flat Infrastructure Rule.** Use tonal fields, rules, and alignment for depth. Do not introduce elevation as decoration.
+Surfaces are flat. Rules and cool-slate fields create separation. The example
+status envelope alone may use one small offset field to read as a concrete
+object. There are no gradients, glass effects, or decorative shadows.
 
 ## Shapes
 
-Containers, tables, code blocks, and notices use square corners. Borders are one pixel and use the shared rule colour. Circular geometry is reserved for literal route nodes, not general component styling. Directional clipping belongs only to markers that communicate direction.
-
-### Named Rules
-
-**The Square Field Rule.** Keep documentation containers square. Do not turn content groups into rounded card grids.
+Borders are one pixel and corner radii stay between zero and four pixels.
+Controls are rectangular. Circular geometry is reserved for literal icons or
+status nodes, not general containers. Avoid pills and rounded card grids.
 
 ## Components
 
-### Navigation
+### Header and class navigation
 
-- **Style:** Condensed, bold, uppercase labels sit on the surface field between one-pixel rules.
-- **Default / Hover:** Default tabs use reduced opacity. Hover and active states use Signal Blue at full opacity.
-- **Active:** Side navigation adds a two-pixel blue inline rule and bold text.
-- **Focus:** Keyboard focus uses a three-pixel Focus outline with a three-pixel offset.
+The header combines the code-native SVG mark, text wordmark, four durable
+destinations, search, version, and GitHub. Active top navigation uses the
+longest matching route so nested destinations do not activate two items.
+Class navigation always keeps its text in ink and uses color through rules and
+fields.
 
-### Links
+### Buttons and links
 
-- **Style:** Body links use Signal Blue with a visible underline, increased underline thickness, and clear offset.
-- **Focus:** The same three-pixel Focus outline applies to links in content, headers, and tabs.
+Primary actions use ink fill; secondary actions use a one-pixel ink border.
+Text links use accessible blue. Every interactive element receives a visible
+three-pixel focus outline. Headings do not need full stops.
 
-### Tables
+### Status envelope
 
-- **Structure:** Tables use collapsed one-pixel rules, square corners, and the full available content width.
-- **Header:** Ink field, Paper text, condensed uppercase labels, and no wrapping.
-- **Cells:** Compact padding and a dense reading size support registry scanning.
-- **Narrow screens:** Tables scroll horizontally rather than compressing or hiding columns.
+The homepage envelope is a semantic figure containing a real ASC 0.1 payload.
+It is not a decorative formula. Syntax color is secondary to readable text.
 
-### Code Blocks
+### Documentation navigation
 
-- **Style:** Monospaced content sits on a tonal code field inside a one-pixel rule.
-- **Shape:** Code containers remain square and have no shadow.
-- **Theme:** Light mode uses a pale grey field with dark code. Dark mode uses a near-black field with warm code text.
+Section and on-page navigation remain quieter than the document. The active
+section uses a blue rule and field. Links retain visible focus.
 
-### Notices
+### Registry and filters
 
-- **Style:** Admonitions and disclosure blocks use a single rule around a flat surface.
-- **Shape:** Corners remain square.
-- **Depth:** No shadow is applied.
+`docs/spec/registry.md` is the only assignment source. Astro parses it into the
+homepage count, class pages, rows, filters, and deep links. Search covers code,
+name, and meaning. Tables show only authoritative fields.
+
+### Search and footer
+
+Pagefind provides static full-text search with no server component. The footer
+states version, experimental status, contribution entry points, and license.
+
+### Logo
+
+The mark is an aperture formed by two brackets around five colored signal
+lines. It represents a common envelope carrying several protocol facts. The
+mark remains code-native SVG and is paired with a plain-text wordmark.
 
 ## Do's and Don'ts
 
-### Do:
+### Do
 
-- **Do** keep normative pages calm, scannable, and within the established reading measure.
-- **Do** use the three type families according to orientation, explanation, and machine-readable content.
-- **Do** preserve semantic colour roles across light and dark themes.
-- **Do** expose keyboard focus and horizontal table overflow.
-- **Do** keep ASC 0.1 visibly experimental where maturity is stated.
+- Start with the interoperability problem, then state what ASC defines.
+- Keep protocol pages calm, scannable, keyboard accessible, and printable.
+- Use class color with a text label and keep assigned meanings authoritative.
+- Use code presentation for machine-readable values and real examples.
+- Keep ASC 0.1 visibly experimental.
 
-### Don't:
+### Don't
 
-- **Don't** infer protocol meaning from colour alone.
-- **Don't** use route colours as incidental prose decoration.
-- **Don't** add shadows, gradients, glass effects, or rounded card grids.
-- **Don't** apply homepage-specific interchange or class-band composition to protocol pages.
-- **Don't** trade reading order or printable structure for visual expression.
+- Do not invent adoption, governance, severity, or HTTP mappings.
+- Do not add gradients, glass, card grids, or oversized protocol theatre.
+- Do not use class color as small body text or as general decoration.
+- Do not use slogan cadence, unexplained abstractions, or em dashes.
+- Do not duplicate registry assignments outside the authoritative Markdown.
