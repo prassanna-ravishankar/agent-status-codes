@@ -8,6 +8,8 @@ import Footer from '../components/Footer.astro';
 interface Props { title: string; description?: string; }
 const { title, description = 'A shared status-code protocol for agents and applications.' } = Astro.props;
 const pageTitle = title === 'Agent Status Codes' ? title : `${title} | Agent Status Codes`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const socialImageUrl = new URL('/og-card.png', Astro.site ?? Astro.url);
 ---
 <!doctype html>
 <html lang="en">
@@ -15,8 +17,24 @@ const pageTitle = title === 'Agent Status Codes' ? title : `${title} | Agent Sta
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Agent Status Codes" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Agent Status Codes, an open status-code protocol for agents and applications" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content="Agent Status Codes, an open status-code protocol for agents and applications" />
     <link rel="icon" href="/asc-mark.svg" type="image/svg+xml" />
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{pageTitle}</title>
   </head>
   <body>
