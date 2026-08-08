@@ -1,7 +1,7 @@
 [project]
 site_url = "https://agentstatuscodes.org/"
 site_name = "Agent Status Codes"
-site_description = "A portable status vocabulary for autonomous agents."
+site_description = "The semantic control layer for autonomous work."
 site_author = "Agent Status Codes contributors"
 copyright = "Released under the MIT License. ASC 0.1 is an experimental draft."
 repo_url = "https://github.com/prassanna-ravishankar/agent-status-codes"
@@ -39,8 +39,9 @@ extra_css = ["assets/stylesheets/asc.css"]
 
 [project.theme]
 language = "en"
-logo = "assets/images/asc-mark.png"
-favicon = "assets/images/asc-mark.png"
+logo = "assets/images/asc-mark-v2.svg"
+favicon = "assets/images/asc-mark-v2.svg"
+font = false
 features = [
   "content.action.edit",
   "content.code.copy",
@@ -60,10 +61,6 @@ features = [
   "search.suggest",
   "toc.follow",
 ]
-
-[project.theme.font]
-text = "Inter"
-code = "JetBrains Mono"
 
 [[project.theme.palette]]
 media = "(prefers-color-scheme)"

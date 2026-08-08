@@ -1,10 +1,10 @@
 # Core concepts
 
-ASC separates facts that are often collapsed into one status field. This page
-is the shortest route to the model; the [status model](../spec/status-model.md)
-contains the normative rules.
+ASC makes agent state actionable by refusing to collapse five different facts
+into one status field. This page is the shortest route to the model; the
+[status model](../spec/status-model.md) contains the normative rules.
 
-## The five-part status
+## One report, five independent signals
 
 <div class="asc-formula">
 agent status = phase + primary code + conditions + events + retry contract
@@ -18,7 +18,7 @@ agent status = phase + primary code + conditions + events + retry contract
 | Events | What happened during execution? | `FALLBACK_USED` |
 | Retry contract | Can another attempt be made safely? | Safe after 2 seconds |
 
-## Status always has a scope
+## Every status belongs to one scope
 
 An agent run is a tree of work. Each status describes exactly one declared
 scope:

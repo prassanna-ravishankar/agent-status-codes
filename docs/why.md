@@ -1,68 +1,96 @@
-# Why agent status needs a specification
+# Status is part of the protocol
 
-Agent frameworks currently describe the same situation in incompatible ways:
-exceptions, task states, tool-result strings, graph interrupts, callback events,
-provider error codes, and dashboard-specific labels. Every integration has to
-translate those signals again.
+Once autonomous work crosses a system boundary, status can no longer remain an
+internal enum. The receiving system needs to know whether the work is running,
+waiting, finished, partly successful, blocked by policy, or uncertain about a
+side effect; it also needs to know whether a person must act and whether another
+attempt is safe.
 
-The problem is deeper than naming. Autonomous work is not one request followed
-by one response. An agent may:
+That meaning is currently scattered across exceptions, task states,
+tool-result strings, graph interrupts, callbacks, provider codes, and dashboard
+labels. Each integration therefore constructs its own translation layer, where
+subtle but important distinctions are easily lost.
 
-- run for minutes or days;
-- call tools that change external systems;
-- delegate work and aggregate mixed outcomes;
-- stop for human input, authentication, or approval;
-- retry a transient dependency;
-- produce a useful partial result;
-- finish execution but fail verification; or
-- time out without knowing whether an external action committed.
+## Autonomous work breaks request-shaped status
 
-HTTP status codes describe the handling of an HTTP request. Process exit codes
-describe how a process terminated. Neither tells an agent runtime whether a task
-can resume, whether a retry is safe, or which parts already succeeded.
+A request normally has one response, whereas autonomous work forms a tree of
+scopes that can remain active for minutes or days. During that time it may call
+state-changing tools, delegate work, preserve mixed child outcomes, pause for a
+person, repair a failed verification, or lose the response to an operation that
+may already have committed.
 
-## What ASC adds
+HTTP can report that the status document was delivered successfully. It cannot
+say that the task described by that document is waiting for approval. A process
+exit code can report termination. It cannot say which child action succeeded or
+whether replay risks performing it twice.
 
-ASC defines a small semantic layer that frameworks can carry through their own
-APIs and protocols:
+These questions concern the work performed by the agent rather than the
+transport or process carrying it, so they need their own contract.
 
-1. A **phase** says where work is in its lifecycle.
-2. A **primary code** gives one canonical summary for one declared scope.
+## Five distinctions make state actionable
+
+ASC separates facts that are dangerous to collapse:
+
+1. **Phase** locates work in its lifecycle.
+2. **One primary status** summarises one declared scope.
 3. **Conditions** preserve simultaneous durable facts.
 4. **Events** record occurrences without replacing the outcome.
-5. A **retry contract** describes transience, safety, and side-effect certainty.
-
-This makes common control flow portable:
+5. **The retry contract** states transience, safety, and side-effect certainty.
 
 ```python
-if status.name == "RATE_LIMITED" and status.retry.safe:
+if status.name == "HUMAN_APPROVAL_REQUIRED":
+    present_approval(status.remediation)
+elif status.name == "RATE_LIMITED" and status.retry.safe:
     retry(after_ms=status.retry.after_ms)
-elif status.name == "HUMAN_APPROVAL_REQUIRED":
-    request_approval()
 elif status.name == "RESULT_STATE_UNKNOWN":
     reconcile_before_retrying()
 ```
 
-## What ASC does not do
+The code supplies a concise summary, while the surrounding fields carry control
+information that the number cannot safely imply.
 
-ASC does not replace HTTP, gRPC, A2A, MCP, OpenTelemetry, framework-native task
-states, or provider diagnostics. It supplies a stable meaning that can be
-embedded in each of them.
+## ASC refuses to guess
 
-It also does not standardise every provider exception or application outcome.
-Vendor and domain detail belongs in structured extension fields beneath a small,
-portable core.
+The protocol makes several separations deliberately:
 
-## The goal
+- transport success is not task success;
+- lifecycle phase is not outcome;
+- severity is not meaning;
+- a transient failure is not permission to replay;
+- human input is not an exceptional crash; and
+- one child status does not overwrite its parent or siblings.
 
-A receiving application should be able to determine:
+These distinctions matter most when certainty is weakest. If an external
+mutation may have committed, `RESULT_STATE_UNKNOWN` instructs the consumer to
+reconcile before doing anything again; reducing the same situation to `TIMEOUT`
+would discard the information needed to proceed safely.
 
-- What happened, and at what scope?
-- Is the work finished or waiting?
+## A semantic layer, not a replacement stack
+
+ASC can travel through HTTP Problem Details, gRPC status details, A2A
+extensions, MCP tool results, OpenTelemetry attributes, or a framework's native
+types. In each case the transport retains its own outcome, while ASC describes
+the autonomous work carried through it.
+
+It does not attempt to standardise every provider exception or business-domain
+result. A small portable core carries the shared meaning; structured extensions
+retain local detail.
+
+## The interoperability test
+
+A consumer that has never seen the producer's framework should still be able to
+answer:
+
+- What happened, and at which scope?
+- Is the work finished, active, or waiting?
 - What succeeded or may already have changed?
-- Can the operation be retried safely?
-- Does a human need to act?
+- Is another attempt permitted and safe?
+- Does a person need to act?
 - Was the result verified?
 
-If implementations can answer those questions consistently, they can interoperate
-without agreeing on one agent framework.
+When these answers survive the boundary, autonomous systems can coordinate
+without sharing an implementation. ASC 0.1 is an early attempt to define that
+common layer, and implementation evidence will determine where it needs to
+change.
+
+[Explore the code registry →](spec/registry.md)

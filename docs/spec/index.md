@@ -5,16 +5,17 @@
 **Version:** 0.1.0
 **Licence:** MIT
 
-This document defines Agent Status Codes (ASC), a portable representation of the
-lifecycle, outcome, conditions, events, and retry semantics of autonomous-agent
-work.
+This document defines Agent Status Codes (ASC), the semantic control layer for
+reporting autonomous work across system boundaries. A conforming ASC payload
+makes lifecycle, outcome, simultaneous conditions, events, and retry safety
+portable without requiring a shared agent framework.
 
 ## Conformance language
 
 The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** express
 normative requirements in this specification.
 
-## Design principles
+## Protocol invariants
 
 1. **One scope, one primary status.** Every primary status describes a declared
    task, step, tool call, model call, handoff, policy decision, evaluation, or

@@ -1,36 +1,52 @@
 # Agent Status Codes
 
 [![CI](https://github.com/prassanna-ravishankar/agent-status-codes/actions/workflows/ci.yml/badge.svg)](https://github.com/prassanna-ravishankar/agent-status-codes/actions/workflows/ci.yml)
-[![ASC 0.1](https://img.shields.io/badge/ASC-0.1%20experimental-7c3aed)](https://agentstatuscodes.org/spec/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-155eef.svg)](LICENSE)
+[![ASC 0.1](https://img.shields.io/badge/ASC-0.1%20experimental-1637f2)](https://agentstatuscodes.org/spec/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-10172a.svg)](LICENSE)
 
-Agent Status Codes (ASC) is an open specification for reporting the lifecycle,
-outcome, conditions, events, and retry semantics of autonomous-agent work.
+Agent runtimes can exchange tasks, yet they lack a common way to report whether
+that work is running, waiting for a person, partly complete, or unsafe to retry.
+Agent Status Codes (ASC) defines a portable representation of that state: what
+happened at a declared scope, which facts remain true, and what may safely
+happen next.
 
-The first audience is framework authors and agent builders who currently have
-to translate between exceptions, task states, tool-result strings, graph
-interrupts, provider error codes, and dashboard-specific labels.
+**[Read the protocol at agentstatuscodes.org](https://agentstatuscodes.org)**
 
-**Website:** [agentstatuscodes.org](https://agentstatuscodes.org)
+## Why status needs a protocol boundary
 
-**Current specification:** ASC 0.1, experimental draft
+An enum can be enough while one runtime owns the entire task. Across runtimes,
+tools, providers, and organisations, the same representation loses the context
+needed to coordinate safely:
 
-## Why another status system?
+- a human approval gate looks like a failure;
+- a successful HTTP response looks like a successful task;
+- one failed child hides useful completed work;
+- a transient error is replayed after its side effect may have committed; or
+- an unrecognised provider string becomes an unrecoverable state.
 
-An agent can run for hours, invoke tools, delegate work, pause for a person,
-partially complete a request, fail verification, or time out without knowing
-whether an external action committed. A Boolean, exception, HTTP status, or
-process exit code cannot express all of that safely.
-
-ASC separates five constructs:
+ASC separates the five facts needed to coordinate that work:
 
 ```text
 agent status = phase + primary code + conditions + events + retry contract
 ```
 
-The retry contract matters. A failure can be transient while repeating the
-operation remains unsafe because a payment, message, booking, or other mutation
-may already have committed.
+The retry contract is explicit because retryability is not safety. A payment,
+message, booking, or other mutation may have committed even when its response
+was lost.
+
+## The code space
+
+| Class | Meaning |
+|---|---|
+| [`1xxx`](https://agentstatuscodes.org/spec/registry/#1xxx-lifecycle-and-progress) | Lifecycle and progress |
+| [`2xxx`](https://agentstatuscodes.org/spec/registry/#2xxx-successful-outcomes) | Successful outcomes |
+| [`3xxx`](https://agentstatuscodes.org/spec/registry/#3xxx-interrupted-deferred-or-human-dependent) | Interrupted and human-dependent |
+| [`4xxx`](https://agentstatuscodes.org/spec/registry/#4xxx-request-authorisation-capability-and-policy) | Request, authorisation, capability, and policy |
+| [`5xxx`](https://agentstatuscodes.org/spec/registry/#5xxx-transient-operational-failures) | Transient operational failures |
+| [`6xxx`](https://agentstatuscodes.org/spec/registry/#6xxx-fatal-indeterminate-or-integrity-threatening-failures) | Fatal, indeterminate, or integrity-threatening failures |
+| [`7xxx`](https://agentstatuscodes.org/spec/registry/#7xxx-trust-quality-grounding-and-verification) | Trust, quality, grounding, and verification |
+| [`8xxx`](https://agentstatuscodes.org/spec/registry/#8xxx-operational-and-efficiency-events) | Operational and efficiency events |
+| [`9xxx`](https://agentstatuscodes.org/spec/registry/#9xxx-extension-space) | Extensions, private use, and experiments |
 
 ## Minimum envelope
 
@@ -49,60 +65,41 @@ may already have committed.
 }
 ```
 
-The code and name travel together. The scope identifies what is being reported,
-and the terminal flag applies to that scope rather than the entire workflow.
+The code and name travel together. Scope identifies what is being reported;
+terminality applies to that scope rather than the entire workflow.
 
-## Read the specification
+## Start here
 
-- [Why ASC exists](https://agentstatuscodes.org/why/)
+- [Why status needs a protocol](https://agentstatuscodes.org/why/)
 - [Core concepts](https://agentstatuscodes.org/get-started/concepts/)
 - [Implementation checklist](https://agentstatuscodes.org/get-started/implementation/)
 - [ASC 0.1 specification](https://agentstatuscodes.org/spec/)
-- [Core code registry](https://agentstatuscodes.org/spec/registry/)
-- [Canonical envelope](https://agentstatuscodes.org/spec/envelope/)
+- [Code registry](https://agentstatuscodes.org/spec/registry/)
 - [Retry contract](https://agentstatuscodes.org/spec/retry/)
-- [Protocol bindings](https://agentstatuscodes.org/spec/bindings/)
 - [Requests for Comments](https://agentstatuscodes.org/rfcs/)
 
-## Local development
+## Work on the specification
 
-The site is built with [Zensical](https://zensical.org/) and its version is
-pinned by `uv.lock`.
+The site uses [Zensical](https://zensical.org/) with a version pinned in
+`uv.lock`.
 
 ```sh
 uv sync
 uv run zensical serve
 ```
 
-Run the same documentation gate as CI:
+Run the documentation gate before submitting changes:
 
 ```sh
 uv run zensical build --clean --strict
 ```
 
-The complete local verification sequence is documented in [AGENTS.md](AGENTS.md).
+Substantial interoperability changes begin with the
+[RFC template](docs/rfcs/template.md). Corrections, examples, test vectors, and
+clearer normative wording can use a normal pull request.
 
-## Repository map
-
-| Path | Purpose |
-|---|---|
-| `docs/get-started/` | Short path from motivation to implementation |
-| `docs/spec/` | Normative ASC 0.1 specification and registry |
-| `docs/rfcs/` | Durable proposal space for substantial changes |
-| `agent-status-codes.md` | Research source material; not normative |
-| `zensical.toml` | Site navigation and presentation |
-
-## RFCs and contributions
-
-Substantial interoperability changes should begin with the
-[RFC template](docs/rfcs/template.md). Corrections, examples, and clearer wording
-can use a normal pull request.
-
-ASC 0.1 is experimental. Its assignments may change before the first stable
-release, and implementations should advertise that fact.
-
-See [Contributing](docs/contributing.md) for the current process. Final RFC
-decision authority remains TBD while the project is young.
+ASC 0.1 is experimental. Implement it, test its boundaries, and bring evidence
+before the registry becomes stable.
 
 ## License
 

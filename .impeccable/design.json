@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-08T14:47:30+01:00",
+  "title": "Design System: Agent Status Codes",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#f4f2ea", "tonalRamp": ["oklch(15% 0.012 92)", "oklch(25% 0.012 92)", "oklch(35% 0.012 92)", "oklch(48% 0.012 92)", "oklch(60% 0.012 92)", "oklch(72% 0.012 92)", "oklch(84% 0.012 92)", "oklch(95% 0.012 92)"] },
+      "surface": { "role": "neutral", "displayName": "Surface", "canonical": "#fffef9", "tonalRamp": ["oklch(15% 0.008 92)", "oklch(25% 0.008 92)", "oklch(35% 0.008 92)", "oklch(48% 0.008 92)", "oklch(60% 0.008 92)", "oklch(72% 0.008 92)", "oklch(84% 0.008 92)", "oklch(95% 0.008 92)"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#10172a", "tonalRamp": ["oklch(15% 0.035 265)", "oklch(25% 0.035 265)", "oklch(35% 0.035 265)", "oklch(48% 0.035 265)", "oklch(60% 0.035 265)", "oklch(72% 0.035 265)", "oklch(84% 0.035 265)", "oklch(95% 0.035 265)"] },
+      "muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#52606d", "tonalRamp": ["oklch(15% 0.025 250)", "oklch(25% 0.025 250)", "oklch(35% 0.025 250)", "oklch(48% 0.025 250)", "oklch(60% 0.025 250)", "oklch(72% 0.025 250)", "oklch(84% 0.025 250)", "oklch(95% 0.025 250)"] },
+      "rule": { "role": "neutral", "displayName": "Ink Rule", "canonical": "rgba(16, 23, 42, 0.22)", "tonalRamp": ["oklch(15% 0.02 265 / 0.22)", "oklch(25% 0.02 265 / 0.22)", "oklch(35% 0.02 265 / 0.22)", "oklch(48% 0.02 265 / 0.22)", "oklch(60% 0.02 265 / 0.22)", "oklch(72% 0.02 265 / 0.22)", "oklch(84% 0.02 265 / 0.22)", "oklch(95% 0.02 265 / 0.22)"] },
+      "signal-blue": { "role": "primary", "displayName": "Signal Blue", "canonical": "#1637f2", "tonalRamp": ["oklch(15% 0.22 265)", "oklch(25% 0.22 265)", "oklch(35% 0.22 265)", "oklch(48% 0.22 265)", "oklch(60% 0.22 265)", "oklch(72% 0.22 265)", "oklch(84% 0.18 265)", "oklch(95% 0.08 265)"] },
+      "signal-red": { "role": "secondary", "displayName": "Signal Red", "canonical": "#b42318", "tonalRamp": ["oklch(15% 0.18 28)", "oklch(25% 0.18 28)", "oklch(35% 0.18 28)", "oklch(48% 0.18 28)", "oklch(60% 0.18 28)", "oklch(72% 0.16 28)", "oklch(84% 0.12 28)", "oklch(95% 0.05 28)"] },
+      "signal-red-field": { "role": "secondary", "displayName": "Signal Red Field", "canonical": "#ff5038", "tonalRamp": ["oklch(15% 0.2 30)", "oklch(25% 0.2 30)", "oklch(35% 0.2 30)", "oklch(48% 0.2 30)", "oklch(60% 0.2 30)", "oklch(72% 0.18 30)", "oklch(84% 0.12 30)", "oklch(95% 0.05 30)"] },
+      "signal-yellow": { "role": "secondary", "displayName": "Signal Yellow", "canonical": "#7a5000", "tonalRamp": ["oklch(15% 0.12 75)", "oklch(25% 0.12 75)", "oklch(35% 0.12 75)", "oklch(48% 0.12 75)", "oklch(60% 0.12 75)", "oklch(72% 0.11 75)", "oklch(84% 0.08 75)", "oklch(95% 0.03 75)"] },
+      "signal-yellow-field": { "role": "secondary", "displayName": "Signal Yellow Field", "canonical": "#ffca2c", "tonalRamp": ["oklch(15% 0.16 90)", "oklch(25% 0.16 90)", "oklch(35% 0.16 90)", "oklch(48% 0.16 90)", "oklch(60% 0.16 90)", "oklch(72% 0.15 90)", "oklch(84% 0.11 90)", "oklch(95% 0.04 90)"] },
+      "signal-mint": { "role": "tertiary", "displayName": "Signal Mint", "canonical": "#a8edc3", "tonalRamp": ["oklch(15% 0.1 152)", "oklch(25% 0.1 152)", "oklch(35% 0.1 152)", "oklch(48% 0.1 152)", "oklch(60% 0.1 152)", "oklch(72% 0.1 152)", "oklch(84% 0.08 152)", "oklch(95% 0.03 152)"] },
+      "signal-green": { "role": "tertiary", "displayName": "Signal Green", "canonical": "#087443", "tonalRamp": ["oklch(15% 0.11 155)", "oklch(25% 0.11 155)", "oklch(35% 0.11 155)", "oklch(48% 0.11 155)", "oklch(60% 0.11 155)", "oklch(72% 0.1 155)", "oklch(84% 0.07 155)", "oklch(95% 0.03 155)"] },
+      "signal-cyan": { "role": "tertiary", "displayName": "Signal Cyan", "canonical": "#006a7a", "tonalRamp": ["oklch(15% 0.09 210)", "oklch(25% 0.09 210)", "oklch(35% 0.09 210)", "oklch(48% 0.09 210)", "oklch(60% 0.09 210)", "oklch(72% 0.08 210)", "oklch(84% 0.06 210)", "oklch(95% 0.025 210)"] },
+      "signal-violet": { "role": "tertiary", "displayName": "Signal Violet", "canonical": "#7149c6", "tonalRamp": ["oklch(15% 0.16 300)", "oklch(25% 0.16 300)", "oklch(35% 0.16 300)", "oklch(48% 0.16 300)", "oklch(60% 0.16 300)", "oklch(72% 0.14 300)", "oklch(84% 0.1 300)", "oklch(95% 0.04 300)"] },
+      "focus": { "role": "primary", "displayName": "Focus Amber", "canonical": "#7c4a00", "tonalRamp": ["oklch(15% 0.12 65)", "oklch(25% 0.12 65)", "oklch(35% 0.12 65)", "oklch(48% 0.12 65)", "oklch(60% 0.12 65)", "oklch(72% 0.11 65)", "oklch(84% 0.08 65)", "oklch(95% 0.03 65)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page titles with a short measure." },
+      "headline": { "displayName": "Headline", "purpose": "Major document sections." },
+      "title": { "displayName": "Title", "purpose": "Third-level headings." },
+      "body": { "displayName": "Body", "purpose": "Documentation prose and lists." },
+      "label": { "displayName": "Label", "purpose": "Navigation and table headers." },
+      "code": { "displayName": "Code", "purpose": "Identifiers, statuses, and payloads." }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      { "name": "narrow-docs", "value": "44.9844em" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Documentation Navigation",
+      "kind": "nav",
+      "refersTo": "navigation-link",
+      "description": "Compact uppercase navigation for durable documentation destinations.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Documentation\"><a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">Specification</a><a class=\"ds-nav-link\" href=\"#\">RFCs</a><a class=\"ds-nav-link\" href=\"#\">Project</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 1.2rem; background: var(--asc-surface, #fffef9); border-block: 1px solid var(--asc-rule, rgba(16,23,42,.22)); padding: .8rem 1rem; } .ds-nav-link { color: var(--asc-ink, #10172a); font-family: var(--asc-display, 'Barlow Condensed', sans-serif); font-size: .78rem; font-weight: 700; letter-spacing: .015em; opacity: .66; text-decoration: none; text-transform: uppercase; } .ds-nav-link:hover, .ds-nav-link--active { color: var(--asc-blue, #1637f2); opacity: 1; } .ds-nav-link:focus-visible { outline: 3px solid var(--asc-focus, #7c4a00); outline-offset: 3px; }"
+    },
+    {
+      "name": "Document Link",
+      "kind": "custom",
+      "description": "Inline link treatment for references within documentation prose.",
+      "html": "<a class=\"ds-doc-link\" href=\"#\">Status envelope</a>",
+      "css": ".ds-doc-link { color: var(--asc-blue, #1637f2); font-family: var(--asc-body, 'Atkinson Hyperlegible', sans-serif); text-decoration-line: underline; text-decoration-thickness: .08em; text-underline-offset: .18em; } .ds-doc-link:hover { text-decoration-thickness: .14em; } .ds-doc-link:focus-visible { outline: 3px solid var(--asc-focus, #7c4a00); outline-offset: 3px; }"
+    },
+    {
+      "name": "Registry Table",
+      "kind": "custom",
+      "refersTo": "table-header",
+      "description": "Dense ruled table for normative registry and field data.",
+      "html": "<table class=\"ds-table\"><thead><tr><th>Code</th><th>Name</th></tr></thead><tbody><tr><td><code>3002</code></td><td>HUMAN_APPROVAL_REQUIRED</td></tr><tr><td><code>5003</code></td><td>DEPENDENCY_UNAVAILABLE</td></tr></tbody></table>",
+      "css": ".ds-table { border: 1px solid var(--asc-rule, rgba(16,23,42,.22)); border-collapse: collapse; color: var(--asc-ink, #10172a); font-family: var(--asc-body, 'Atkinson Hyperlegible', sans-serif); font-size: .76rem; width: 100%; } .ds-table th { background: var(--asc-ink, #10172a); color: var(--asc-paper, #f4f2ea); font-family: var(--asc-display, 'Barlow Condensed', sans-serif); font-size: .78rem; letter-spacing: .035em; text-align: left; text-transform: uppercase; white-space: nowrap; } .ds-table td, .ds-table th { border: 1px solid var(--asc-rule, rgba(16,23,42,.22)); padding: .7rem .8rem; } .ds-table code { font-family: var(--asc-code, 'Source Code Pro', monospace); }"
+    },
+    {
+      "name": "Code Block",
+      "kind": "custom",
+      "refersTo": "code-container",
+      "description": "Square, ruled container for protocol payloads and examples.",
+      "html": "<pre class=\"ds-code\"><code>{\n  \"code\": 3002,\n  \"phase\": \"WAITING\"\n}</code></pre>",
+      "css": ".ds-code { background: var(--md-code-bg-color, #e9e7df); border: 1px solid var(--asc-rule, rgba(16,23,42,.22)); border-radius: 0; box-shadow: none; color: var(--md-code-fg-color, #111827); font-family: var(--asc-code, 'Source Code Pro', monospace); font-size: .76rem; line-height: 1.7; margin: 0; overflow: auto; padding: 1rem; } .ds-code:focus-visible { outline: 3px solid var(--asc-focus, #7c4a00); outline-offset: 3px; }"
+    },
+    {
+      "name": "Notice",
+      "kind": "card",
+      "refersTo": "notice",
+      "description": "Flat ruled container for documentation notes and disclosures.",
+      "html": "<aside class=\"ds-notice\"><strong>Note</strong><p>Examples are informative unless explicitly labelled normative.</p></aside>",
+      "css": ".ds-notice { background: var(--asc-surface, #fffef9); border: 1px solid var(--asc-rule, rgba(16,23,42,.22)); border-radius: 0; box-shadow: none; color: var(--asc-ink, #10172a); font-family: var(--asc-body, 'Atkinson Hyperlegible', sans-serif); font-size: .84rem; line-height: 1.7; padding: 1rem; } .ds-notice strong { font-family: var(--asc-display, 'Barlow Condensed', sans-serif); font-size: .78rem; letter-spacing: .035em; text-transform: uppercase; } .ds-notice p { margin: .7rem 0 0; } .ds-notice:focus-within { outline: 3px solid var(--asc-focus, #7c4a00); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Civic Status Wayfinding",
+    "overview": "The system uses the visual grammar of public infrastructure: paper-like fields, dark ink, one-pixel rules, compressed signage type, and colour assigned to routes and state. It is direct and functional. The interface stays flat, with hierarchy carried by typography, rules, fields, and alignment.\n\nProtocol pages are restrained reading surfaces. Their navigation, tables, code, and notices use the same wayfinding language without reproducing the homepage's expressive composition. Light and dark themes preserve roles rather than fixed appearances.",
+    "keyCharacteristics": [
+      "Flat paper and ink surfaces with visible structural rules.",
+      "Condensed headings and labels paired with hyperlegible body text.",
+      "Monospaced numerals and protocol identifiers.",
+      "Semantic colour used for navigation and status distinctions.",
+      "Square containers, explicit focus, and responsive reading layouts."
+    ],
+    "rules": [
+      { "name": "The Route Colour Rule", "body": "Assign signal colours to protocol meaning, navigation, or state. Do not scatter them through ordinary prose as decoration.", "section": "colors" },
+      { "name": "The Role-Preserving Theme Rule", "body": "Dark mode changes the values of semantic roles. It does not change which roles a component uses.", "section": "colors" },
+      { "name": "The Three-Voice Rule", "body": "Use condensed type for orientation, hyperlegible type for explanation, and monospace for machine-readable values.", "section": "typography" },
+      { "name": "The Flat Infrastructure Rule", "body": "Use tonal fields, rules, and alignment for depth. Do not introduce elevation as decoration.", "section": "elevation" },
+      { "name": "The Square Field Rule", "body": "Keep documentation containers square. Do not turn content groups into rounded card grids.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep normative pages calm, scannable, and within the established reading measure.",
+      "Do use the three type families according to orientation, explanation, and machine-readable content.",
+      "Do preserve semantic colour roles across light and dark themes.",
+      "Do expose keyboard focus and horizontal table overflow.",
+      "Do keep ASC 0.1 visibly experimental where maturity is stated."
+    ],
+    "donts": [
+      "Don't infer protocol meaning from colour alone.",
+      "Don't use route colours as incidental prose decoration.",
+      "Don't add shadows, gradients, glass effects, or rounded card grids.",
+      "Don't apply homepage-specific interchange or class-band composition to protocol pages.",
+      "Don't trade reading order or printable structure for visual expression."
+    ]
+  }
+}
