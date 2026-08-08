@@ -96,3 +96,14 @@ jobs:
           kubectl get httproute agent-status-codes \
             --namespace clusterkit \
             -o jsonpath='{range .status.parents[*].conditions[*]}{.type}={.status} {.reason}{"\n"}{end}'
+
+  gate:
+    name: Verify public readiness
+    needs: deploy
+    permissions:
+      contents: read
+      id-token: write
+    uses: prassanna-ravishankar/clusterkit/.github/workflows/deploy-gate.yml@main
+    with:
+      hostnames: agentstatuscodes.org
+    secrets: inherit

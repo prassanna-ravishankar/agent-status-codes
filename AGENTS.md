@@ -22,6 +22,9 @@ ASC 0.1 is an experimental draft released under the MIT License.
 - `helm/agent-status-codes/` deploys the site to ClusterKit.
 - `.github/workflows/ci.yml` validates docs, Helm, and the container.
 - `.github/workflows/production.yml` deploys `main` to production.
+- Production finishes through ClusterKit's reusable public-readiness gate,
+  which waits for healthy load-balancer endpoints and consecutive public
+  responses after the Kubernetes rollout.
 
 ## Editorial rules
 
