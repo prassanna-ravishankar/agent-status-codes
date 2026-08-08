@@ -1,0 +1,9 @@
+.git
+.github
+.venv
+site
+.DS_Store
+agent-status-codes.md
+AGENTS.md
+CLAUDE.md
+README.md
