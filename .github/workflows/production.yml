@@ -103,7 +103,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    uses: prassanna-ravishankar/clusterkit/.github/workflows/deploy-gate.yml@main
+    uses: prassanna-ravishankar/clusterkit/.github/workflows/deploy-gate.yml@deploy-gate/v1
     with:
       hostnames: agentstatuscodes.org
     secrets: inherit
