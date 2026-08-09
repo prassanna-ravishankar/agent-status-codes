@@ -80,17 +80,12 @@ button, input { font: inherit; }
 .preview-grid p { margin: 0; color: var(--muted); font-size: 13px; }
 
 .reference-shell { padding-top: 1.5rem; }
-.reference-header { border-bottom: 1px solid var(--line); }
+.reference-header { padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
 .breadcrumb { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; min-height: 34px; color: var(--muted); font: 14px/1.2 'IBM Plex Mono', monospace; }
 .breadcrumb a { text-decoration: none; }
 .breadcrumb a:hover { color: var(--ink); }
 .breadcrumb > span[aria-current='page'] { color: var(--ink); }
 .breadcrumb > span[aria-hidden='true'] { color: var(--line-strong); }
-.reference-tabs { display: flex; gap: 2rem; overflow-x: auto; scrollbar-width: thin; }
-.reference-tabs a { position: relative; display: inline-flex; flex: 0 0 auto; align-items: baseline; gap: .55rem; padding: .75rem 0 .8rem; color: var(--muted); font-weight: 600; text-decoration: none; }
-.reference-tabs a:hover, .reference-tabs a[aria-current='page'] { color: var(--ink); }
-.reference-tabs a[aria-current='page']::after { content: ''; position: absolute; inset: auto 0 -1px; height: 3px; background: var(--ink); }
-.reference-tabs small { color: var(--muted); font: 13px/1 'IBM Plex Mono', monospace; }
 .docs-shell { display: grid; grid-template-columns: 230px minmax(0, 780px) 200px; gap: clamp(2rem, 4vw, 5rem); align-items: start; padding-block: 2.5rem 6rem; }
 .registry-shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: clamp(2rem, 4vw, 5rem); align-items: start; }
 .docs-nav, .toc { position: sticky; top: 8.5rem; max-height: calc(100vh - 10rem); overflow: auto; }
@@ -198,7 +193,6 @@ button, input { font: inherit; }
   .section-heading .text-link { margin-top: 1rem; }
   .preview-grid { grid-template-columns: 1fr 1fr; }
   .reference-shell { padding-top: 1rem; }
-  .reference-tabs { gap: 1.5rem; }
   .docs-shell, .registry-shell { display: block; padding-top: 1.5rem; }
   .docs-nav-desktop { display: none; }
   .docs-nav-mobile { display: block; }

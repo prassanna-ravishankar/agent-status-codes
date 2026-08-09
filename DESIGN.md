@@ -96,10 +96,9 @@ heading endpoints used in production.
 
 ## Layout
 
-Reference pages use a mono breadcrumb, underlined section tabs, and grouped
-side navigation. Protocol, Registry, Implement, and RFCs remain visible as the
-primary destinations. Search, version, and source control stay in the global
-header without repeating the same destinations.
+Reference pages use a mono breadcrumb and grouped side navigation. Search,
+version, and source control stay in the global header. Navigation is stated
+once rather than repeated above the document.
 
 One nine-part class index appears per page. The homepage uses the labeled class
 index below its status envelope. Other pages use the compact class rail below
