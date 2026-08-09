@@ -1,0 +1,28 @@
+---
+import { getRegistry } from '../lib/registry';
+const current = Astro.url.pathname;
+const registryCount = getRegistry().reduce((sum, item) => sum + item.entries.length, 0);
+const tabs = [['Protocol', '/spec/'], ['Registry', '/spec/registry/'], ['Implement', '/get-started/implementation/'], ['RFCs', '/rfcs/']] as const;
+function tabIsActive(href: string) {
+  if (href === '/spec/registry/') return current === href;
+  if (href === '/spec/') return (current.startsWith('/spec/') && !current.startsWith('/spec/registry/')) || current === '/why/';
+  if (href === '/get-started/implementation/') return current.startsWith('/get-started/') || current === '/examples/';
+  return current.startsWith('/rfcs/') || current === '/contributing/';
+}
+const segments = current.split('/').filter(Boolean);
+const crumbLabels: Record<string, string> = { 'get-started': 'implement', 'status-model': 'status model', envelope: 'status envelope', retry: 'retry contract', bindings: 'protocol bindings', security: 'security and privacy' };
+const crumbs = segments.map((segment, index) => ({
+  label: crumbLabels[segment] ?? segment.replaceAll('-', ' '),
+  href: segment === 'get-started' ? '/get-started/implementation/' : `/${segments.slice(0, index + 1).join('/')}/`,
+  last: index === segments.length - 1
+}));
+---
+<div class="reference-header">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">asc</a>
+    {crumbs.map((crumb) => <><span aria-hidden="true">/</span>{crumb.last ? <span aria-current="page">{crumb.label}</span> : <a href={crumb.href}>{crumb.label}</a>}</>)}
+  </nav>
+  <nav class="reference-tabs" aria-label="Reference sections">
+    {tabs.map(([label, href]) => <a href={href} aria-current={tabIsActive(href) ? 'page' : undefined}><span>{label}</span>{href === '/spec/registry/' && <small>{registryCount}</small>}</a>)}
+  </nav>
+</div>

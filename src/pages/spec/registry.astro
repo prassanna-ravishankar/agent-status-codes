@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import DocsNav from '../../components/DocsNav.astro';
+import ReferenceHeader from '../../components/ReferenceHeader.astro';
 import { getRegistry } from '../../lib/registry';
 const registry = getRegistry();
 const count = registry.reduce((sum, item) => sum + item.entries.length, 0);
 ---
 <BaseLayout title="Code registry" description="The authoritative Agent Status Codes 0.1 registry.">
-  <main class="registry-page shell" data-pagefind-body>
+  <div class="reference-shell shell">
+    <ReferenceHeader />
+    <div class="registry-shell">
+      <DocsNav />
+      <main class="registry-page" data-pagefind-body>
     <header class="registry-header">
       <p class="eyebrow">ASC 0.1 · Authoritative registry</p>
       <h1>Code registry</h1>
@@ -34,7 +40,9 @@ const count = registry.reduce((sum, item) => sum + item.entries.length, 0);
         </div>
       </section>)}
     </div>
-  </main>
+      </main>
+    </div>
+  </div>
 </BaseLayout>
 <script>
   const input = document.querySelector<HTMLInputElement>('#registry-search');

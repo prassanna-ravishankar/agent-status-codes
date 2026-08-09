@@ -2,6 +2,7 @@
 import { codeClasses } from '../data/classes';
 import { topNavigation } from '../data/navigation';
 const current = Astro.url.pathname;
+const isReferencePage = ['/spec/', '/get-started/', '/rfcs/'].some((path) => current.startsWith(path)) || ['/why/', '/examples/', '/contributing/'].includes(current);
 const activeTopHref = [...topNavigation]
   .map(([, href]) => href)
   .filter((href) => current.startsWith(href))
@@ -13,7 +14,7 @@ const activeTopHref = [...topNavigation]
       <img src="/asc-mark.svg" width="34" height="34" alt="" />
       <span>Agent Status Codes</span>
     </a>
-    <nav class="topnav" aria-label="Primary navigation">
+    <nav class:list={['topnav', { 'topnav-reference-hidden': isReferencePage }]} aria-label="Primary navigation">
       {topNavigation.map(([label, href]) => <a href={href} aria-current={activeTopHref === href ? 'page' : undefined}>{label}</a>)}
     </nav>
     <div class="header-tools">
@@ -21,7 +22,7 @@ const activeTopHref = [...topNavigation]
       <a class="version-link" href="/spec/">ASC 0.1</a>
       <a class="github-link" href="https://github.com/prassanna-ravishankar/agent-status-codes" aria-label="GitHub">GitHub</a>
     </div>
-    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    {!isReferencePage && <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button>}
   </div>
   {current !== '/' && <nav class="class-rail" aria-label="Code classes">
     {codeClasses.map((item) => <a data-code-class={item.digit} href={`/spec/registry/#${item.digit}xxx-${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} style={`--class-color:${item.color}`}>{item.digit}xxx</a>)}

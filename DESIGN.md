@@ -96,17 +96,18 @@ heading endpoints used in production.
 
 ## Layout
 
-The top navigation is the primary orientation device. Protocol, Registry,
-Implement, and RFCs stay visible on wide screens. Search, version, and source
-control share the bar without competing with those destinations.
+Reference pages use a mono breadcrumb, underlined section tabs, and grouped
+side navigation. Protocol, Registry, Implement, and RFCs remain visible as the
+primary destinations. Search, version, and source control stay in the global
+header without repeating the same destinations.
 
 One nine-part class index appears per page. The homepage uses the labeled class
 index below its status envelope. Other pages use the compact class rail below
 the header. Both link to explicit authoritative registry anchors.
 
-Documentation pages use three rails when space permits: section navigation,
-the document, and an on-page contents list. Narrow screens preserve that
-reading order without fixed sidebars. Registry tables scroll horizontally
+Documentation pages use three rails when space permits: grouped section
+navigation, the document, and an on-page contents list. Narrow screens collapse
+the section navigation before the document. Registry tables scroll horizontally
 rather than hiding fields.
 
 ## Elevation & Depth
